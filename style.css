@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", serif;
+}
+
+hr {
+  margin: 0;
+}
+
+.navbar {
+  background-color: #e0397e !important;
+}
+
+.logoCasamento {
+  width: 50px;
+  margin-left: 1%;
+  filter: brightness(10%);
+}
