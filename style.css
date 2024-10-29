@@ -1,8 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Meow+Script&family=Poiret+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", serif;
+  font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+  overflow-x: hidden; /* evita rolagem horizontal */
+  overflow-y: auto; /* permite rolagem vertical */
+}
+
+p {
+  margin: 6px;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+body {
+  background-color: #f5f5f5;
 }
 
 hr {
@@ -16,5 +39,97 @@ hr {
 .logoCasamento {
   width: 50px;
   margin-left: 1%;
-  filter: brightness(10%);
+  filter: brightness(20%);
+}
+
+/* Titulo */
+#tituloLista {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.text-center {
+  margin-top: 6%;
+  margin-bottom: 2%;
+}
+
+.lead {
+  font-family: "Poiret One", sans-serif;
+}
+
+#tituloLista h1 {
+  font-size: 2.6rem;
+  font-family: "Meow Script", cursive;
+}
+
+/* Card */
+.cards-presentes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.card {
+  width: 90%;
+  height: 100%;
+  margin-top: 25px;
+  margin-bottom: 30px;
+}
+
+.card-img-top {
+  padding: 15px;
+}
+
+.card:nth-child(1) {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.subtitle {
+  font-weight: 500;
+}
+
+.observacao {
+  font-size: 0.9rem;
+  margin-top: 30px;
+}
+
+.card-text {
+  font-weight: 300;
+}
+
+.btn-card {
+  background-color: #e0397e;
+  color: #f5f5f5;
+}
+
+.lojas-icon {
+  width: 50px;
+  height: auto;
+  filter: grayscale(100%);
+  margin-top: 4px;
+}
+
+p > span {
+  font-weight: 300;
+  font-size: 0.8rem;
+  margin-bottom: 2px;
+}
+
+.lojas-icon:hover {
+  filter: grayscale(0%);
+  cursor: pointer;
 }
