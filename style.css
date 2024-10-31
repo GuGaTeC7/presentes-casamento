@@ -9,12 +9,14 @@
 
 html,
 body {
-  overflow-x: hidden; /* evita rolagem horizontal */
-  overflow-y: auto; /* permite rolagem vertical */
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 p {
   margin: 6px;
+  font-size: 1.1rem;
 }
 
 main {
@@ -40,6 +42,16 @@ hr {
   width: 50px;
   margin-left: 1%;
   filter: brightness(20%);
+}
+
+/* Estilo para suavizar a transição do dropdown */
+.dropdown-menu {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out; /* Tempo e suavidade da transição */
+}
+
+.dropdown-menu.show {
+  opacity: 1; /* Define a opacidade para quando estiver visível */
 }
 
 /* Titulo */
@@ -78,6 +90,11 @@ hr {
   margin-bottom: 30px;
 }
 
+.topico h1 {
+  margin-left: 2%;
+  font-size: 1.5rem;
+}
+
 .card-img-top {
   padding: 15px;
 }
@@ -96,6 +113,7 @@ hr {
 
 .card-title {
   text-align: center;
+  font-size: 1.2rem;
 }
 
 .subtitle {

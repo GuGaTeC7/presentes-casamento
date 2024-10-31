@@ -58,13 +58,32 @@
                     >Página inicial</a
                   >
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >Lista de presentes</a
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link active dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
                   >
+                    Lista de Presentes
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="#eletrodomesticos"
+                        >Eletrodomésticos</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#cozinha">Cozinha</a>
+                    </li>
+                  </ul>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#"
+                  <a
+                    class="nav-link"
+                    aria-current="page"
+                    href="#eletrodomesticos"
                     >Nossa história</a
                   >
                 </li>
@@ -92,183 +111,283 @@
       </div>
 
       <!-- Presentes -->
-      <div class="cards-presentes">
-        <div class="card">
-          <img
-            src="https://electrolux.vtexassets.com/arquivos/ids/228205-800-800?v=638234060706930000&width=800&height=800&aspect=true"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Geladeira Electrolux Frost Free</h5>
+      <!-- Eletrodomésticos -->
+      <section class="topico" id="eletrodomesticos">
+        <h1>Eletrodomésticos</h1>
+        <div class="cards-presentes">
+          <div class="card">
+            <img
+              src="https://electrolux.vtexassets.com/arquivos/ids/228205-800-800?v=638234060706930000&width=800&height=800&aspect=true"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Geladeira Electrolux Frost Free</h5>
 
-            <p class="card-text">R$3.200,03</p>
-            <p class="subtitle">Loja(s) recomendada(s):</p>
-            <div class="lojas">
-              <a
-                href="https://loja.electrolux.com.br/geladeira-electrolux-frost-free-duplex-efficient-com-autosense-cor-inox-look-409l--iw45s-/p?idsku=310120605"
-                target="_blank"
-                ><img
-                  src="https://logos-world.net/wp-content/uploads/2020/12/Electrolux-Emblem.png"
-                  class="lojas-icon"
-                  alt="Electrolux"
-                  title="Electrolux"
-              /></a>
-            </div>
-            <p class="subtitle observacao">
-              Observação:
-              <span
-                >Este item deve seguir as medidas específicas para encaixar nos
-                móveis planejados</span
-              >
-            </p>
-          </div>
-        </div>
-
-        <!--  -->
-
-        <div class="card">
-          <img
-            src="https://a-static.mlcdn.com.br/800x560/liquidificador-mondial-turbo-l-900-fb-copo-preto-com-filtro-05-velocidades-900w/magazineluiza/021726000/92e401cdcb99c88b58ce2639668a1d4d.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Liquidificador Mondial Turbo L-900</h5>
-
-            <p class="card-text">R$189,90</p>
-            <p class="subtitle">Loja(s) recomendada(s):</p>
-            <div class="lojas">
-              <a
-                href="https://www.magazineluiza.com.br/liquidificador-mondial-turbo-l-900-fb-copo-preto-com-filtro-05-velocidades-900w/p/021726000/ep/lqac/?partner_id=64068&utm_source=pdp&utm_medium=share"
-                target="_blank"
-                ><img
-                  src="/imgs/18-Logo-200x200.png"
-                  class="lojas-icon"
-                  alt="Magazine Luiza"
-                  title="Magazine Luiza"
-              /></a>
+              <p class="card-text">R$3.200,03</p>
+              <p class="subtitle">Loja(s) recomendada(s):</p>
+              <div class="lojas">
+                <a
+                  href="https://loja.electrolux.com.br/geladeira-electrolux-frost-free-duplex-efficient-com-autosense-cor-inox-look-409l--iw45s-/p?idsku=310120605"
+                  target="_blank"
+                  ><img
+                    src="https://logos-world.net/wp-content/uploads/2020/12/Electrolux-Emblem.png"
+                    class="lojas-icon"
+                    alt="Electrolux"
+                    title="Electrolux"
+                /></a>
+              </div>
+              <p class="subtitle observacao">
+                Observação:
+                <span
+                  >Este item deve seguir as medidas específicas para encaixar
+                  nos móveis planejados</span
+                >
+              </p>
             </div>
           </div>
-        </div>
 
-        <!--  -->
+          <!--  -->
 
-        <div class="card">
-          <img
-            src="https://a-static.mlcdn.com.br/800x560/fritadeira-eletrica-sem-oleo-air-fryer-mondial-forno-oven-afon-12l-bi-preta-12l/magazineluiza/237219400/1c2f2ed761bb1cd0ce2deb6e922a5a0d.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">
-              Fritadeira Elétrica sem Óleo/Air Fryer Mondial
-            </h5>
+          <div class="card">
+            <img
+              src="https://a-static.mlcdn.com.br/800x560/liquidificador-mondial-turbo-l-900-fb-copo-preto-com-filtro-05-velocidades-900w/magazineluiza/021726000/92e401cdcb99c88b58ce2639668a1d4d.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Liquidificador Mondial Turbo L-900</h5>
 
-            <p class="card-text">R$547,77</p>
-            <p class="subtitle">Loja(s) recomendada(s):</p>
-            <div class="lojas">
-              <a
-                href="https://www.magazineluiza.com.br/fritadeira-eletrica-sem-oleo-air-fryer-mondial-forno-oven-afon-12l-bi-preta-12l/p/237219400/ep/efso/?partner_id=64068&utm_source=pdp&utm_medium=share"
-                target="_blank"
-                ><img
-                  src="/imgs/18-Logo-200x200.png"
-                  class="lojas-icon"
-                  alt="Magazine Luiza"
-                  title="Magazine Luiza"
-              /></a>
+              <p class="card-text">R$189,90</p>
+              <p class="subtitle">Loja(s) recomendada(s):</p>
+              <div class="lojas">
+                <a
+                  href="https://www.magazineluiza.com.br/liquidificador-mondial-turbo-l-900-fb-copo-preto-com-filtro-05-velocidades-900w/p/021726000/ep/lqac/?partner_id=64068&utm_source=pdp&utm_medium=share"
+                  target="_blank"
+                  ><img
+                    src="/imgs/18-Logo-200x200.png"
+                    class="lojas-icon"
+                    alt="Magazine Luiza"
+                    title="Magazine Luiza"
+                /></a>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!--  -->
+          <!--  -->
 
-        <div class="card">
-          <img
-            src="https://a-static.mlcdn.com.br/800x560/sanduicheira-grill-mondial-master-s-20-preta-750w-antiaderente/magazineluiza/236683900/d8d32752d8bf1ffbcfecb713cb14143f.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">
-              Sanduicheira Grill Mondial Master S-20 Preta
-            </h5>
+          <div class="card">
+            <img
+              src="https://a-static.mlcdn.com.br/800x560/fritadeira-eletrica-sem-oleo-air-fryer-mondial-forno-oven-afon-12l-bi-preta-12l/magazineluiza/237219400/1c2f2ed761bb1cd0ce2deb6e922a5a0d.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                Fritadeira Elétrica sem Óleo/Air Fryer Mondial
+              </h5>
 
-            <p class="card-text">R$123,84</p>
-            <p class="subtitle">Loja(s) recomendada(s):</p>
-            <div class="lojas">
-              <a
-                href="https://www.magazineluiza.com.br/sanduicheira-grill-mondial-master-s-20-preta-750w-antiaderente/p/236683900/ep/gset/?partner_id=64068&utm_source=pdp&utm_medium=share"
-                target="_blank"
-                ><img
-                  src="/imgs/18-Logo-200x200.png"
-                  class="lojas-icon"
-                  alt="Magazine Luiza"
-                  title="Magazine Luiza"
-              /></a>
+              <p class="card-text">R$547,77</p>
+              <p class="subtitle">Loja(s) recomendada(s):</p>
+              <div class="lojas">
+                <a
+                  href="https://www.magazineluiza.com.br/fritadeira-eletrica-sem-oleo-air-fryer-mondial-forno-oven-afon-12l-bi-preta-12l/p/237219400/ep/efso/?partner_id=64068&utm_source=pdp&utm_medium=share"
+                  target="_blank"
+                  ><img
+                    src="/imgs/18-Logo-200x200.png"
+                    class="lojas-icon"
+                    alt="Magazine Luiza"
+                    title="Magazine Luiza"
+                /></a>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!--  -->
+          <!--  -->
 
-        <div class="card">
-          <img
-            src="https://a-static.mlcdn.com.br/800x560/aspirador-de-po-e-agua-electrolux-aqp20-acqua-power-1400w/magazineluiza/085865500/1ffe32386b60199f66164339e2612c46.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Aspirador de Pó e Água Electrolux AQP20</h5>
+          <div class="card">
+            <img
+              src="https://a-static.mlcdn.com.br/800x560/sanduicheira-grill-mondial-master-s-20-preta-750w-antiaderente/magazineluiza/236683900/d8d32752d8bf1ffbcfecb713cb14143f.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                Sanduicheira Grill Mondial Master S-20 Preta
+              </h5>
 
-            <p class="card-text">R$258,24</p>
-            <p class="subtitle">Loja(s) recomendada(s):</p>
-            <div class="lojas">
-              <a
-                href="https://www.magazineluiza.com.br/aspirador-de-po-e-agua-electrolux-aqp20-acqua-power-1400w/p/085865500/ep/elau/?partner_id=64068&utm_source=pdp&utm_medium=share"
-                target="_blank"
-                ><img
-                  src="/imgs/18-Logo-200x200.png"
-                  class="lojas-icon"
-                  alt="Magazine Luiza"
-                  title="Magazine Luiza"
-              /></a>
+              <p class="card-text">R$123,84</p>
+              <p class="subtitle">Loja(s) recomendada(s):</p>
+              <div class="lojas">
+                <a
+                  href="https://www.magazineluiza.com.br/sanduicheira-grill-mondial-master-s-20-preta-750w-antiaderente/p/236683900/ep/gset/?partner_id=64068&utm_source=pdp&utm_medium=share"
+                  target="_blank"
+                  ><img
+                    src="/imgs/18-Logo-200x200.png"
+                    class="lojas-icon"
+                    alt="Magazine Luiza"
+                    title="Magazine Luiza"
+                /></a>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!--  -->
+          <!--  -->
 
-        <div class="card">
-          <img
-            src="https://a-static.mlcdn.com.br/800x560/jogo-de-panelas-brinox-revestimento-ceramico-de-aluminio-vanilla-5-pecas-optima/magazineluiza/144134600/c53e6c9bd01a6855f1262c42dc82ed80.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">
-              Jogo de Panelas Brinox Revestimento Cerâmico de Alumínio
-            </h5>
+          <div class="card">
+            <img
+              src="https://a-static.mlcdn.com.br/800x560/aspirador-de-po-e-agua-electrolux-aqp20-acqua-power-1400w/magazineluiza/085865500/1ffe32386b60199f66164339e2612c46.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                Aspirador de Pó e Água Electrolux AQP20
+              </h5>
 
-            <p class="card-text">R$530,01</p>
-            <p class="subtitle">Loja(s) recomendada(s):</p>
-            <div class="lojas">
-              <a
-                href="https://www.magazineluiza.com.br/jogo-de-panelas-brinox-revestimento-ceramico-de-aluminio-vanilla-5-pecas-optima/p/144134600/ud/cjpn/?partner_id=64068&utm_source=pdp&utm_medium=share"
-                target="_blank"
-                ><img
-                  src="/imgs/18-Logo-200x200.png"
-                  class="lojas-icon"
-                  alt="Magazine Luiza"
-                  title="Magazine Luiza"
-              /></a>
+              <p class="card-text">R$258,24</p>
+              <p class="subtitle">Loja(s) recomendada(s):</p>
+              <div class="lojas">
+                <a
+                  href="https://www.magazineluiza.com.br/aspirador-de-po-e-agua-electrolux-aqp20-acqua-power-1400w/p/085865500/ep/elau/?partner_id=64068&utm_source=pdp&utm_medium=share"
+                  target="_blank"
+                  ><img
+                    src="/imgs/18-Logo-200x200.png"
+                    class="lojas-icon"
+                    alt="Magazine Luiza"
+                    title="Magazine Luiza"
+                /></a>
+              </div>
             </div>
           </div>
         </div>
-
         <!--  -->
-      </div>
+      </section>
+
+      <!-- Cozinha -->
+      <section class="topico" id="cozinha">
+        <h1>Cozinha</h1>
+        <div class="cards-presentes">
+          <div class="card">
+            <img
+              src="https://a-static.mlcdn.com.br/800x560/jogo-de-panelas-brinox-revestimento-ceramico-de-aluminio-vanilla-5-pecas-optima/magazineluiza/144134600/c53e6c9bd01a6855f1262c42dc82ed80.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                Jogo de Panelas Brinox Revestimento Cerâmico de Alumínio
+              </h5>
+
+              <p class="card-text">R$530,01</p>
+              <p class="subtitle">Loja(s) recomendada(s):</p>
+              <div class="lojas">
+                <a
+                  href="https://www.magazineluiza.com.br/jogo-de-panelas-brinox-revestimento-ceramico-de-aluminio-vanilla-5-pecas-optima/p/144134600/ud/cjpn/?partner_id=64068&utm_source=pdp&utm_medium=share"
+                  target="_blank"
+                  ><img
+                    src="/imgs/18-Logo-200x200.png"
+                    class="lojas-icon"
+                    alt="Magazine Luiza"
+                    title="Magazine Luiza"
+                /></a>
+              </div>
+            </div>
+          </div>
+
+          <!--  -->
+
+          <div class="card">
+            <img
+              src="https://a-static.mlcdn.com.br/800x560/panela-de-pressao-brinox-pressure-revestimento-ceramico-antiaderente-com-inducao-54l-preta/alfixshop/12067/9cb50f887347f1a0913bbdff9f2c3daf.jpeg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                Panela de Pressão Brinox Pressure Revestimento Cerâmico
+              </h5>
+
+              <p class="card-text">R$296,99</p>
+              <p class="subtitle">Loja(s) recomendada(s):</p>
+              <div class="lojas">
+                <a
+                  href="https://www.magazineluiza.com.br/panela-de-pressao-brinox-pressure-revestimento-ceramico-antiaderente-com-inducao-54l-preta/p/jj8d0a226a/ud/udpp/?partner_id=64068&utm_source=pdp&utm_medium=share"
+                  target="_blank"
+                  ><img
+                    src="/imgs/18-Logo-200x200.png"
+                    class="lojas-icon"
+                    alt="Magazine Luiza"
+                    title="Magazine Luiza"
+                /></a>
+              </div>
+            </div>
+          </div>
+
+          <!--  -->
+
+          <div class="card">
+            <img
+              src="https://a-static.mlcdn.com.br/800x560/panela-de-pressao-rochedo-smart-antiaderente-fechamento-externo-76l/lojaslebiscuit/2147441014/fc0b4e5fbb97c056bef70e43d83817ff.jpeg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                Panela de Pressão Rochedo Smart Antiaderente Fechamento Externo
+              </h5>
+
+              <p class="card-text">R$241,50</p>
+              <p class="subtitle">Loja(s) recomendada(s):</p>
+              <div class="lojas">
+                <a
+                  href="https://www.magazineluiza.com.br/panela-de-pressao-rochedo-smart-antiaderente-fechamento-externo-76l/p/ag2776jghc/ud/udpp/?partner_id=64068&utm_source=pdp&utm_medium=share"
+                  target="_blank"
+                  ><img
+                    src="/imgs/18-Logo-200x200.png"
+                    class="lojas-icon"
+                    alt="Magazine Luiza"
+                    title="Magazine Luiza"
+                /></a>
+              </div>
+            </div>
+          </div>
+
+          <!--  -->
+
+          <div class="card">
+            <img
+              src="https://a-static.mlcdn.com.br/800x560/jogo-de-copos-de-vidro-350ml-6-pecas-haus-concept-pavillion/magazineluiza/231205400/7583b8bede499af45718b9464be32035.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                Jogo de Copos de Vidro 350ml 6 Peças Haus Concept
+              </h5>
+
+              <p class="card-text">R$49,90</p>
+              <p class="subtitle">Loja(s) recomendada(s):</p>
+              <div class="lojas">
+                <a
+                  href="https://www.magazineluiza.com.br/jogo-de-copos-de-vidro-350ml-6-pecas-haus-concept-pavillion/p/231205400/ud/coas/?partner_id=64068&utm_source=pdp&utm_medium=share"
+                  target="_blank"
+                  ><img
+                    src="/imgs/18-Logo-200x200.png"
+                    class="lojas-icon"
+                    alt="Magazine Luiza"
+                    title="Magazine Luiza"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--  -->
+      </section>
     </main>
+
+    <!-- Script para fechar o dropdown e o offcanvas ao clicar -->
+    <script src="script.js"></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
