@@ -101,7 +101,7 @@ hr {
 
 .card:nth-child(1) {
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 30px;
 }
 
 .card-body {
@@ -139,6 +139,7 @@ hr {
   height: auto;
   filter: grayscale(100%);
   margin-top: 4px;
+  animation: pulse 1.5s ease-in-out infinite;
 }
 
 p > span {
@@ -151,4 +152,17 @@ p > span {
   filter: grayscale(0%);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+}
+
+/* Animações */
+@keyframes pulse {
+  0% {
+    transform: scale(1); /* Tamanho original */
+  }
+  50% {
+    transform: scale(1.1); /* Aumenta em 10% */
+  }
+  100% {
+    transform: scale(1); /* Volta ao tamanho original */
+  }
 }
