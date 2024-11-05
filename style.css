@@ -90,6 +90,11 @@ hr {
   margin-bottom: 30px;
 }
 
+.carregando {
+  width: 100%;
+  padding: 20px;
+}
+
 .topico h1 {
   margin-left: 2%;
   font-size: 1.5rem;
@@ -154,6 +159,22 @@ p > span {
   transition: all 0.3s ease-in-out;
 }
 
+/* Loading */
+#loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
 /* Animações */
 @keyframes pulse {
   0% {
@@ -164,5 +185,14 @@ p > span {
   }
   100% {
     transform: scale(1); /* Volta ao tamanho original */
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
