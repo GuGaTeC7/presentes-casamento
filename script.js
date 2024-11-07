@@ -64,7 +64,7 @@ function montaGridPresentes(presentes, idSection) {
           <div class="card-body">
             <h5 class="card-title">${nomeProduto}</h5>
             <p class="card-text">R$${valorProduto}</p>
-            <p class="subtitle">Loja(s) recomendada(s):</p>
+            <p class="subtitle">Loja recomendada:</p>
             <div class="lojas">
               <a href="${linkLoja}" target="_blank">
                 <img src="${imgLoja}" class="lojas-icon" alt="Loja" title="Loja" />
@@ -89,7 +89,7 @@ function montaGridPresentes(presentes, idSection) {
     // Limpa o conteúdo anterior da seção
     cardsPresentesDiv.innerHTML = ""; // Limpa o conteúdo anterior dentro da div de cards
 
-    // Lista de eletrodomésticos
+    // Lista da cozinha
     presentes.forEach((presente) => {
       const imgLoja = presente.img_loja;
       const linkLoja = presente.link_loja;
@@ -104,7 +104,7 @@ function montaGridPresentes(presentes, idSection) {
           <div class="card-body">
             <h5 class="card-title">${nomeProduto}</h5>
             <p class="card-text">R$${valorProduto}</p>
-            <p class="subtitle">Loja(s) recomendada(s):</p>
+            <p class="subtitle">Loja recomendada:</p>
             <div class="lojas">
               <a href="${linkLoja}" target="_blank">
                 <img src="${imgLoja}" class="lojas-icon" alt="Loja" title="Loja" />
