@@ -76,6 +76,7 @@ function montaGridPresentes(presentes, idSection) {
                   >${observacao}</span
                 >
             </p>
+            <button class="btn btn-fucsia btn-comprei" type="button" data-bs-toggle="modal" data-bs-target="#modalComprei" data-nome="${nomeProduto}">Comprei</button>
           </div>
         </div>
       `;
@@ -123,8 +124,33 @@ function montaGridPresentes(presentes, idSection) {
       cardsPresentesDiv.innerHTML += eletrosContent; // Adiciona o conteúdo do produto dentro da div de cards
     });
   }
+
+  // Evento para abrir o modal com o nome do produto
+  document.addEventListener("click", (event) => {
+    if (event.target.classList.contains("btn-comprei")) {
+      const nomeProduto = event.target.getAttribute("data-nome");
+      document.getElementById("produtoCompradoNome").textContent = nomeProduto;
+    }
+  });
+
+  // Evento de confirmação de compra
+  document.getElementById("confirmarCompra").addEventListener("click", () => {
+    const nomeProduto = document.getElementById(
+      "produtoCompradoNome"
+    ).textContent;
+
+    // Formatar a mensagem para o WhatsApp
+    const mensagemWhatsApp = `Oi, tudo bem?%0AAcabei de comprar o item "${nomeProduto}" para vocês.%0AEspero que gostem!`;
+
+    // Atualizar o link do botão "Noiva" no modal "Comunicar Noivos"
+    const linkNoiva = document.getElementById("btnComunicarNoiva");
+    const linkNoivo = document.getElementById("btnComunicarNoivo");
+    linkNoiva.href = `https://wa.me/5511986222839?text=${mensagemWhatsApp}`;
+    linkNoivo.href = `https://wa.me/5511989257480?text=${mensagemWhatsApp}`;
+  });
 }
 
 // Chama a função para obter os presentes da categoria com ID 1
 getPresentes(1, 1);
+// Chama a função para obter os presentes da categoria com ID 2
 getPresentes(2, 2);
