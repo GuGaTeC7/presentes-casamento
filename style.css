@@ -125,6 +125,7 @@ hr {
 .btn-fucsia {
   background-color: #df219d;
   color: #ffffff;
+  margin-top: 5;
 }
 
 .btn-fucsia:hover {

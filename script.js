@@ -117,6 +117,7 @@ function montaGridPresentes(presentes, idSection) {
                   >${observacao}</span
                 >
             </p>
+            <button class="btn btn-fucsia btn-comprei" type="button" data-bs-toggle="modal" data-bs-target="#modalComprei" data-nome="${nomeProduto}">Comprei</button>
           </div>
         </div>
       `;
