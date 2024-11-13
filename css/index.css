@@ -1,0 +1,15 @@
+.divisao img {
+  width: 60px;
+  margin-bottom: 50%;
+}
+
+.list-group {
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: center;
+}

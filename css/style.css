@@ -15,6 +15,10 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 p {
@@ -27,6 +31,7 @@ main {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 body {
@@ -58,7 +63,7 @@ hr {
 }
 
 /* Titulo */
-#tituloLista {
+#tituloMain {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,7 +79,7 @@ hr {
   font-family: "Poiret One", sans-serif;
 }
 
-#tituloLista h1 {
+#tituloMain h1 {
   font-size: 2.6rem;
   font-family: "Meow Script", cursive;
 }
@@ -99,7 +104,7 @@ hr {
 }
 
 .topico h1 {
-  margin-left: 2%;
+  margin-left: 3%;
   font-size: 1.5rem;
 }
 
@@ -209,31 +214,32 @@ p > span {
 
 /* Footer styling */
 .footer {
-  color: #f1f1f1; /* Cor do texto para contraste */
+  color: #f1f1f1;
   font-size: 0.9rem;
 }
 
 .footer-logo {
-  width: 80px; /* Ajuste do tamanho da logo no footer */
+  width: 80px;
   height: auto;
 }
 
 .footer-link {
-  color: #e0e0e0; /* Cor do link harmoniosa com o tema */
+  color: #e0e0e0;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-link:hover {
-  color: #ffffff; /* Destaque ao passar o mouse */
+  color: #ffffff;
 }
 
 .footer-separator {
-  color: #6c757d; /* Separador mais suave */
+  color: #6c757d;
 }
 
 .footer-bottom p {
   font-size: 0.9rem;
+  margin-bottom: 0.2rem;
 }
 
 /* Animações */

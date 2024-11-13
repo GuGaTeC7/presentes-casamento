@@ -10,7 +10,8 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/index.css" />
     <link rel="icon" type="image/x-icon" href="/imgs/favicon.png" />
   </head>
   <body>
@@ -54,30 +55,21 @@
             <div class="offcanvas-body">
               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#"
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="/index.html"
                     >Página inicial</a
                   >
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item">
                   <a
-                    class="nav-link active dropdown-toggle"
-                    href="#"
+                    class="nav-link"
+                    href="/lista-presentes.html"
                     role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
                   >
                     Lista de Presentes
                   </a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="#eletrodomesticos"
-                        >Eletrodomésticos</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#cozinha">Cozinha</a>
-                    </li>
-                  </ul>
                 </li>
                 <li class="nav-item">
                   <a
@@ -100,147 +92,32 @@
     <!-- Main -->
     <main>
       <!-- Título -->
-      <div class="container mt-4 pt-5" id="tituloLista">
-        <div class="text-center p-4">
-          <h1>Lista de presentes!</h1>
+      <div class="container mt-4 pt-5" id="tituloMain">
+        <div class="text-center p-3">
+          <h1>Bem-vindos ao nosso site!</h1>
           <p class="lead">
-            Bem-vindo à nossa lista de presentes. Aqui você encontra algumas
-            sugestões para lhe ajudar a escolher um presente!
+            Aqui você encontrará diversas coisas relacionadas ao nosso
+            casamento!
           </p>
         </div>
       </div>
 
-      <!-- Presentes -->
-      <!-- Eletrodomésticos -->
-      <section class="topico" id="eletrodomesticos">
-        <h1>Eletrodomésticos</h1>
-        <div class="cards-presentes">
-          <!-- Card Loading -->
-          <div class="card carregando">
-            <h5 class="card-title">carregando...</h5>
-            <div id="loading">
-              <div class="spinner"></div>
-            </div>
-          </div>
+      <div class="divisao">
+        <img src="/imgs/flor-divisao.png" alt="flor" />
+      </div>
 
-          <!-- Os cards serão inseridos aqui pelo JavaScript -->
-        </div>
-      </section>
-
-      <!-- Cozinha -->
-      <section class="topico" id="cozinha">
-        <h1>Cozinha</h1>
-        <div class="cards-presentes">
-          <!-- Card Loading -->
-          <div class="card carregando">
-            <h5 class="card-title">carregando...</h5>
-            <div id="loading">
-              <div class="spinner"></div>
-            </div>
-          </div>
-
-          <!-- Os cards serão inseridos aqui pelo JavaScript -->
-        </div>
-
-        <!-- Modal Confirmar Compra -->
-        <div
-          class="modal fade"
-          id="modalComprei"
-          tabindex="-1"
-          aria-labelledby="modalCompreiLabel"
-          aria-hidden="true"
+      <div class="list-group mb-3">
+        <h6>Navegue por aqui:</h6>
+        <a
+          href="/lista-presentes.html"
+          class="list-group-item list-group-item-action"
+          >Lista de presentes</a
         >
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalCompreiLabel">
-                  Confirmação de Compra
-                </h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="modal-body">
-                Tem certeza que deseja marcar o item "<span
-                  id="produtoCompradoNome"
-                ></span
-                >" como comprado?
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Cancelar
-                </button>
-                <button
-                  type="button"
-                  class="btn"
-                  style="background-color: #df219d; color: white"
-                  id="confirmarCompra"
-                  data-bs-toggle="modal"
-                  data-bs-target="#modalComunicarNoivos"
-                >
-                  Confirmar
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Modal Contactar Noivos -->
-        <div
-          class="modal fade"
-          id="modalComunicarNoivos"
-          tabindex="-1"
-          aria-labelledby="modalComunicarNoivosLabel"
-          aria-hidden="true"
+        <a href="#" class="list-group-item list-group-item-action"
+          >Nossa história</a
         >
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalComunicarNoivosLabel">
-                  Comunicar noivos
-                </h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="modal-body comunicar-noivos">
-                <a
-                  href="https://wa.me/5511986222839?text=${mensagemWhatsApp}"
-                  target="_blank"
-                  class="btn btn-success"
-                  id="btnComunicarNoiva"
-                  ><img
-                    src="https://img.icons8.com/?size=100&id=ocJH9t0GGj7Y&format=png&color=FFFFFF"
-                    alt="whatsapp"
-                    class="logo-whatsapp"
-                  />Noiva</a
-                >
-                <a
-                  href="https://wa.me/5511986222839?text=${mensagemWhatsApp}"
-                  target="_blank"
-                  class="btn btn-success"
-                  id="btnComunicarNoivo"
-                  ><img
-                    src="https://img.icons8.com/?size=100&id=ocJH9t0GGj7Y&format=png&color=FFFFFF"
-                    alt="whatsapp"
-                    class="logo-whatsapp"
-                  />Noivo</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        <a href="#" class="list-group-item list-group-item-action">Festa</a>
+      </div>
     </main>
 
     <footer class="footer bg-dark text-light py-1">

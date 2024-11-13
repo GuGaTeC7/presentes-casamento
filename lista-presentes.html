@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giovanna & Gustavo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/x-icon" href="/imgs/favicon.png" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="navbar bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"
+            ><img
+              src="imgs/logos/LogoCasamentoBlack.png"
+              alt="logo"
+              class="logoCasamento"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation"
+            style="padding: 10px; border: 1px solid rgba(0, 0, 0, 0.416)"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <hr />
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="/index.html"
+                    >Página inicial</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    href="/lista-presentes.html"
+                    role="button"
+                  >
+                    Lista de Presentes
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    aria-current="page"
+                    href="#eletrodomesticos"
+                    >Nossa história</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="#">Festa</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main -->
+    <main>
+      <!-- Título -->
+      <div class="container mt-4 pt-5" id="tituloMain">
+        <div class="text-center p-4">
+          <h1>Lista de presentes!</h1>
+          <p class="lead">
+            Bem-vindo à nossa lista de presentes. Aqui você encontra algumas
+            sugestões para lhe ajudar a escolher um presente!
+          </p>
+        </div>
+      </div>
+
+      <!-- Presentes -->
+      <!-- Eletrodomésticos -->
+      <section class="topico" id="eletrodomesticos">
+        <h1>Eletrodomésticos</h1>
+        <div class="cards-presentes">
+          <!-- Card Loading -->
+          <div class="card carregando">
+            <h5 class="card-title">carregando...</h5>
+            <div id="loading">
+              <div class="spinner"></div>
+            </div>
+          </div>
+
+          <!-- Os cards serão inseridos aqui pelo JavaScript -->
+        </div>
+      </section>
+
+      <!-- Cozinha -->
+      <section class="topico" id="cozinha">
+        <h1>Cozinha</h1>
+        <div class="cards-presentes">
+          <!-- Card Loading -->
+          <div class="card carregando">
+            <h5 class="card-title">carregando...</h5>
+            <div id="loading">
+              <div class="spinner"></div>
+            </div>
+          </div>
+
+          <!-- Os cards serão inseridos aqui pelo JavaScript -->
+        </div>
+
+        <!-- Modal Confirmar Compra -->
+        <div
+          class="modal fade"
+          id="modalComprei"
+          tabindex="-1"
+          aria-labelledby="modalCompreiLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalCompreiLabel">
+                  Confirmação de Compra
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                Tem certeza que deseja marcar o item "<span
+                  id="produtoCompradoNome"
+                ></span
+                >" como comprado?
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="button"
+                  class="btn"
+                  style="background-color: #df219d; color: white"
+                  id="confirmarCompra"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalComunicarNoivos"
+                >
+                  Confirmar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Contactar Noivos -->
+        <div
+          class="modal fade"
+          id="modalComunicarNoivos"
+          tabindex="-1"
+          aria-labelledby="modalComunicarNoivosLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalComunicarNoivosLabel">
+                  Comunicar noivos
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body comunicar-noivos">
+                <a
+                  href="https://wa.me/5511986222839?text=${mensagemWhatsApp}"
+                  target="_blank"
+                  class="btn btn-success"
+                  id="btnComunicarNoiva"
+                  ><img
+                    src="https://img.icons8.com/?size=100&id=ocJH9t0GGj7Y&format=png&color=FFFFFF"
+                    alt="whatsapp"
+                    class="logo-whatsapp"
+                  />Noiva</a
+                >
+                <a
+                  href="https://wa.me/5511986222839?text=${mensagemWhatsApp}"
+                  target="_blank"
+                  class="btn btn-success"
+                  id="btnComunicarNoivo"
+                  ><img
+                    src="https://img.icons8.com/?size=100&id=ocJH9t0GGj7Y&format=png&color=FFFFFF"
+                    alt="whatsapp"
+                    class="logo-whatsapp"
+                  />Noivo</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer bg-dark text-light py-1">
+      <div class="container text-center">
+        <div class="footer-top mb-3">
+          <img
+            src="imgs/logos/LogoCasamentoWhite.png"
+            alt="Logo"
+            class="footer-logo mb-3"
+          />
+          <p class="mb-1">Junte-se à nossa jornada e celebre conosco!</p>
+        </div>
+        <div class="footer-links mb-3">
+          <a href="#eletrodomesticos" class="footer-link">Eletrodomésticos</a>
+          <span class="footer-separator mx-2">|</span>
+          <a href="#cozinha" class="footer-link">Cozinha</a>
+          <span class="footer-separator mx-2">|</span>
+          <a href="#festa" class="footer-link">Festa</a>
+        </div>
+
+        <hr />
+
+        <div
+          class="footer-bottom d-flex flex-column justify-content-center align-items-center py-2"
+        >
+          <p>&copy; 2024 Giovanna & Gustavo</p>
+          <p>Todos os direitos reservados</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Script para fechar o dropdown e o offcanvas ao clicar -->
+    <script src="script.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
