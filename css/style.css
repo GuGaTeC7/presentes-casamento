@@ -75,12 +75,12 @@ hr {
   margin-bottom: 2%;
 }
 
-.lead {
-  font-family: "Poiret One", sans-serif;
+.lead {  
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
 }
 
-.lead-justify {
-  font-family: "Poiret One", sans-serif;
+.justify {
   text-align: justify;
 }
 
@@ -88,6 +88,25 @@ hr {
   font-size: 2.6rem;
   font-family: "Meow Script", cursive;
 }
+
+/* Flor */
+.divisao img {
+  width: 60px;
+  margin-bottom: 50%;
+}
+
+/* List group */
+.list-group {
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: center;
+}
+
 
 /* Card */
 .cards-presentes {

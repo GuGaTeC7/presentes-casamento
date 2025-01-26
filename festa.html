@@ -12,8 +12,9 @@
     />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="icon" type="image/x-icon" href="/imgs/favicon.png" />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRcXXt1xjOXDDdkh03BK5enVKduqKyAiM&callback=initMap"></script>
   </head>
-  <body>
+  <body onload="initMap()">
     <!-- Header -->
     <header>
       <nav class="navbar bg-body-tertiary fixed-top">
@@ -94,22 +95,46 @@
     <main>
       <!-- Título -->
       <div class="container mt-4 pt-5" id="tituloMain">
-        <div class="text-center p-4">
-          <h1>Nossa história</h1>
-          <p class="lead justify" style="font-size: 1.05rem;">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui,
-            laboriosam, quaerat modi repellat quod accusantium sint corrupti
-            asperiores provident sit dicta officiis aut rerum praesentium
-            beatae. Quia quae cumque nostrum et. Nostrum delectus facilis
-            laboriosam debitis, itaque mollitia commodi veniam tempora pariatur,
-            maiores ea at optio dolor omnis exercitationem nemo? Iure quaerat ea
-            vel molestiae magnam quam dolorum molestias ut? Ea perspiciatis,
-            nesciunt enim consectetur fuga adipisci possimus, rem blanditiis
-            amet soluta unde a necessitatibus veniam quis, facilis ratione
-            commodi quisquam? Et eum quae ipsa, sapiente esse ex ea suscipit,
-            modi debitis amet laborum, aliquam accusamus fugiat mollitia
-            repudiandae sed.
+        <div class="text-center p-3">
+          <h1>Festa</h1>
+
+          <p class="lead">
+            AMOR E ALEGRIA! VENHAM CELEBRAR ESSE DIA QUE SERÁ LEMBRADO PARA
+            SEMPRE.
           </p>
+        </div>
+
+        <div class="divisao">
+          <img src="/imgs/flor-divisao.png" alt="flor" />
+        </div>
+
+        <div class="card" style="width: 90%" style="margin-top: 4%">
+          <img
+            src="/imgs/frente-montello.jpeg"
+            class="card-img-top"
+            style="padding: 0"
+            alt="salao"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Buffet Montello</h5>
+            <div style="text-align: center">
+              <p class="card-text">
+                R. Oscar Siebel, 68 - Aricanduva, São Paulo, SP, 03479-010
+              </p>
+              <p class="card-text" style="opacity: 50%">
+                23 de Novembro de 2025, 13h
+              </p>
+            </div>
+
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3514.038622596261!2d-46.5064304!3d-23.5725475!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce67312a500219%3A0x4de4a3e589077b1a!2sBuffet%20Montello%20-%20Unidade%20Siebel!5e1!3m2!1spt-BR!2sbr!4v1737911708295!5m2!1spt-BR!2sbr"
+              width="100%"
+              style="width: '100%'; height: '15rem'; margin-top: 25px"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
         </div>
       </div>
     </main>
@@ -145,6 +170,7 @@
 
     <!-- Script para fechar o dropdown e o offcanvas ao clicar -->
     <script src="/js/script.js"></script>
+    <script src="/js/mapa.js"></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
