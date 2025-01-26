@@ -58,14 +58,26 @@
                     >Página inicial</a
                   >
                 </li>
-                <li class="nav-item">
+                <li class="nav-item dropdown">
                   <a
-                    class="nav-link active"
+                    class="nav-link active dropdown-toggle"
                     href="/lista-presentes.html"
                     role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
                   >
                     Lista de Presentes
                   </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="#eletrodomesticos"
+                        >Eletrodomésticos</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#cozinha">Cozinha</a>
+                    </li>
+                  </ul>
                 </li>
                 <li class="nav-item">
                   <a
@@ -90,7 +102,7 @@
       <!-- Título -->
       <div class="container mt-4 pt-5" id="tituloMain">
         <div class="text-center p-4">
-          <h1>Lista de presentes!</h1>
+          <h1>Lista de presentes</h1>
           <p class="lead">
             Bem-vindo à nossa lista de presentes. Aqui você encontra algumas
             sugestões para lhe ajudar a escolher um presente!
@@ -261,7 +273,7 @@
     </footer>
 
     <!-- Script para fechar o dropdown e o offcanvas ao clicar -->
-    <script src="script.js"></script>
+    <script src="/js/script.js"></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
