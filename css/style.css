@@ -79,6 +79,11 @@ hr {
   font-family: "Poiret One", sans-serif;
 }
 
+.lead-justify {
+  font-family: "Poiret One", sans-serif;
+  text-align: justify;
+}
+
 #tituloMain h1 {
   font-size: 2.6rem;
   font-family: "Meow Script", cursive;
