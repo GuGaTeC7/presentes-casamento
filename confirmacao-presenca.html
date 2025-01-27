@@ -11,7 +11,6 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/index.css" />
     <link rel="icon" type="image/x-icon" href="/imgs/favicon.png" />
   </head>
   <body>
@@ -103,37 +102,30 @@
     <main>
       <!-- Título -->
       <div class="container mt-4 pt-5" id="tituloMain">
-        <div class="text-center p-3">
-          <h1>Bem-vindos ao nosso site!</h1>
+        <div class="text-center p-4">
+          <h1>Confirmação de presença</h1>
           <p class="lead">
-            Aqui você encontrará diversas informações relacionadas ao nosso
-            casamento!
+            Sua presença tornará nosso dia ainda mais especial. Por favor,
+            confirme sua participação para nos ajudar na organização. <br />
+            Agradecemos muito!
           </p>
         </div>
       </div>
 
-      <div class="divisao">
-        <img src="/imgs/flor-divisao.png" alt="flor" />
-      </div>
-
-      <div class="list-group mb-3">
-        <h6>Navegue por aqui:</h6>
-        <a
-          href="/lista-presentes.html"
-          class="list-group-item list-group-item-action"
-          >Lista de presentes</a
+      <div style="width: 90%; margin-bottom: 20px; border: 2px solid #df219d">
+        <div id="loading" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+          <h5 class="card-title">CARREGANDO FORMULÁRIO, AGUARDE...</h5>
+          <div class="spinner"></div>
+        </div>
+        <iframe
+          src="https://forms.gle/9Yfe7zZyrJtoN1cMA"
+          style="width: 100%; height: 800px"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          onload="hideLoader()"
         >
-        <a
-          href="/nossa-historia.html"
-          class="list-group-item list-group-item-action"
-          >Nossa história</a
-        >
-        <a href="/festa.html" class="list-group-item list-group-item-action"
-          >Festa</a
-        >
-        <a href="/confirmacao-presenca.html" class="list-group-item list-group-item-action"
-          >Confirmação de presença</a
-        >
+      </iframe>
       </div>
     </main>
 

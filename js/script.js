@@ -151,6 +151,12 @@ function montaGridPresentes(presentes, idSection) {
   });
 }
 
+function hideLoader() {
+  const loader = document.getElementById("loading");
+  loader.style.display = "none";
+}
+
+
 // Chama a função para obter os presentes da categoria com ID 1
 getPresentes(1, 1);
 // Chama a função para obter os presentes da categoria com ID 2
