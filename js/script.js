@@ -32,7 +32,7 @@ async function getPresentes(idCategoria, idSection) {
     }
 
     const data = await response.json();
-    // console.log(data); // Imprime os presentes no console do navegador com data
+    console.log(data); // Imprime os presentes no console do navegador com data
 
     montaGridPresentes(data, idSection);
   } catch (error) {
@@ -124,11 +124,62 @@ function montaGridPresentes(presentes, idSection) {
 
       cardsPresentesDiv.innerHTML += eletrosContent; // Adiciona o conteúdo do produto dentro da div de cards
     });
+  } else if (idSection === 3) {
+    const casaSection = document.getElementById("casa");
+    const cardsPresentesDiv = casaSection.querySelector(".cards-presentes");
+
+    // Limpa o conteúdo anterior da seção
+    cardsPresentesDiv.innerHTML = ""; // Limpa o conteúdo anterior dentro da div de cards
+
+    // Lista da casa
+    presentes.forEach((presente) => {
+      const imgLoja = presente.img_loja;
+      const linkLoja = presente.link_loja;
+      const nomeProduto = presente.nome;
+      const valorProduto = presente.valor;
+      const fotoProduto = presente.foto;
+      const observacao = presente.observacao;
+      const logoZap = "/imgs/logoZap.png";
+
+      const eletrosContent = `
+        <div class="card">
+          <img src="${fotoProduto}" class="card-img-top" alt="${nomeProduto}" />
+          <div class="card-body">
+            <h5 class="card-title">${nomeProduto}</h5>
+            <p class="card-text">R$${valorProduto}</p>
+            <p class="subtitle">Loja recomendada:</p>
+            <div class="lojas">
+              <a href="${linkLoja}" target="_blank" data-bs-toggle="modal" data-bs-target="#modalComunicarNoivos">
+                <img src="${
+                  imgLoja === "whatsapp" ? logoZap : imgLoja
+                }" class="lojas-icon" alt="Loja" title="Loja" />
+              </a>
+            </div>
+            <p class="subtitle observacao" ${
+              observacao === null ? 'style="display: none;"' : ""
+            }>
+                Observação:
+                <span
+                  >${observacao}</span
+                >
+            </p>
+            <button class="btn btn-fucsia btn-comprei" ${
+              imgLoja === "whatsapp" ? 'style="display: none;"' : ""
+            } type="button" data-bs-toggle="modal" data-bs-target="#modalComprei" data-nome="${nomeProduto}">Comprei</button>
+          </div>
+        </div>
+      `;
+
+      cardsPresentesDiv.innerHTML += eletrosContent; // Adiciona o conteúdo do produto dentro da div de cards
+    });
   }
 
   // Evento para abrir o modal com o nome do produto
   document.addEventListener("click", (event) => {
     if (event.target.classList.contains("btn-comprei")) {
+      const nomeProduto = event.target.getAttribute("data-nome");
+      document.getElementById("produtoCompradoNome").textContent = nomeProduto;
+    } else if (event.target.classList.contains("lojas-icon")) {
       const nomeProduto = event.target.getAttribute("data-nome");
       document.getElementById("produtoCompradoNome").textContent = nomeProduto;
     }
@@ -146,9 +197,28 @@ function montaGridPresentes(presentes, idSection) {
     // Atualizar o link do botão "Noiva" no modal "Comunicar Noivos"
     const linkNoiva = document.getElementById("btnComunicarNoiva");
     const linkNoivo = document.getElementById("btnComunicarNoivo");
-    linkNoiva.href = `https://wa.me/5511986222839?text=${mensagemWhatsApp}`;
+    linkNoiva.href = `https://wa.me/5511986222839?text=${
+      nomeProduto == null ? "" : mensagemWhatsApp
+    }`;
     linkNoivo.href = `https://wa.me/5511989257480?text=${mensagemWhatsApp}`;
   });
+
+  // Evento de click direto no whatsapp
+  document
+    .getElementById("modalComunicarNoivos")
+    .addEventListener("show.bs.modal", (event) => {
+      const card = event.relatedTarget.closest(".card");
+      const nomeProduto = card.querySelector(".card-img-top").alt;
+
+      // Formatar a mensagem para o WhatsApp
+      const mensagemWhatsApp = `Oi, tudo bem?%0AQuero comprar o item "${nomeProduto}" para vocês.%0AComo prosseguir?`;
+
+      // Atualizar os links do WhatsApp no modal
+      const linkNoiva = document.getElementById("btnComunicarNoiva");
+      const linkNoivo = document.getElementById("btnComunicarNoivo");
+      linkNoiva.href = `https://wa.me/5511986222839?text=${mensagemWhatsApp}`;
+      linkNoivo.href = `https://wa.me/5511989257480?text=${mensagemWhatsApp}`;
+    });
 }
 
 function hideLoader() {
@@ -156,8 +226,9 @@ function hideLoader() {
   loader.style.display = "none";
 }
 
-
 // Chama a função para obter os presentes da categoria com ID 1
 getPresentes(1, 1);
 // Chama a função para obter os presentes da categoria com ID 2
 getPresentes(2, 2);
+// Chama a função para obter os presentes da categoria com ID 3
+getPresentes(3, 3);
