@@ -78,6 +78,7 @@ hr {
 .lead {  
   font-family: "Poppins", sans-serif;
   font-weight: 200;
+  font-size: 1.20rem;
 }
 
 .justify {
@@ -85,7 +86,7 @@ hr {
 }
 
 #tituloMain h1 {
-  font-size: 2.6rem;
+  font-size: 2.73rem;
   font-family: "Meow Script", cursive;
 }
 
@@ -129,7 +130,7 @@ hr {
 
 .topico h1 {
   margin-left: 3%;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 .card-img-top {
