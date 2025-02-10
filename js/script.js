@@ -57,26 +57,37 @@ function montaGridPresentes(presentes, idSection) {
       const valorProduto = presente.valor;
       const fotoProduto = presente.foto;
       const observacao = presente.observacao;
+      const status = presente.comprado;
 
       const eletrosContent = `
-        <div class="card">
-          <img src="${fotoProduto}" class="card-img-top" alt="${nomeProduto}" />
+        <div class="${status == false ? "card" : "card comprado"}">
+          <img src="${fotoProduto}" class="card-img-top" alt="${nomeProduto}" style="${
+        status == false ? "" : "filter: grayscale(100%);"
+      }" />
           <div class="card-body">
             <h5 class="card-title">${nomeProduto}</h5>
             <p class="card-text">R$${valorProduto}</p>
-            <p class="subtitle">Loja recomendada:</p>
-            <div class="lojas">
+            <p class="subtitle" style="${
+              status == false ? "" : "display: none;"
+            }">Loja recomendada:</p>
+            <div class="lojas" style="${
+              status == false ? "" : "display: none;"
+            }">
               <a href="${linkLoja}" target="_blank">
                 <img src="${imgLoja}" class="lojas-icon" alt="Loja" title="Loja" />
               </a>
             </div>
-            <p class="subtitle observacao">
+            <p class="subtitle observacao" style="${
+              status == false ? "" : "display: none;"
+            }">
                 Observação:
                 <span
                   >${observacao}</span
                 >
             </p>
-            <button class="btn btn-fucsia btn-comprei" type="button" data-bs-toggle="modal" data-bs-target="#modalComprei" data-nome="${nomeProduto}">Comprei</button>
+            <button class="btn btn-fucsia btn-comprei" style="${
+              status == false ? "" : "display: none;"
+            }" type="button" data-bs-toggle="modal" data-bs-target="#modalComprei" data-nome="${nomeProduto}">Comprei</button>
           </div>
         </div>
       `;
@@ -98,26 +109,37 @@ function montaGridPresentes(presentes, idSection) {
       const valorProduto = presente.valor;
       const fotoProduto = presente.foto;
       const observacao = presente.observacao;
+      const status = presente.comprado;
 
       const eletrosContent = `
-        <div class="card">
-          <img src="${fotoProduto}" class="card-img-top" alt="${nomeProduto}" />
+        <div class="${status == false ? "card" : "card comprado"}">
+          <img src="${fotoProduto}" class="card-img-top" alt="${nomeProduto}" style="${
+        status == false ? "" : "filter: grayscale(100%);"
+      }"/>
           <div class="card-body">
             <h5 class="card-title">${nomeProduto}</h5>
             <p class="card-text">R$${valorProduto}</p>
-            <p class="subtitle">Loja recomendada:</p>
-            <div class="lojas">
+            <p class="subtitle" style="${
+              status == false ? "" : "display: none;"
+            }">Loja recomendada:</p>
+            <div class="lojas" style="${
+              status == false ? "" : "display: none;"
+            }">
               <a href="${linkLoja}" target="_blank">
                 <img src="${imgLoja}" class="lojas-icon" alt="Loja" title="Loja" />
               </a>
             </div>
-            <p class="subtitle observacao">
+            <p class="subtitle observacao" style="${
+              status == false ? "" : "display: none;"
+            }">
                 Observação:
                 <span
                   >${observacao}</span
                 >
             </p>
-            <button class="btn btn-fucsia btn-comprei" type="button" data-bs-toggle="modal" data-bs-target="#modalComprei" data-nome="${nomeProduto}">Comprei</button>
+            <button class="btn btn-fucsia btn-comprei" style="${
+              status == false ? "" : "display: none;"
+            }" type="button" data-bs-toggle="modal" data-bs-target="#modalComprei" data-nome="${nomeProduto}">Comprei</button>
           </div>
         </div>
       `;
@@ -139,33 +161,43 @@ function montaGridPresentes(presentes, idSection) {
       const valorProduto = presente.valor;
       const fotoProduto = presente.foto;
       const observacao = presente.observacao;
+      const status = presente.comprado;
+
       const logoZap = "/imgs/logoZap.png";
 
       const eletrosContent = `
-        <div class="card">
-          <img src="${fotoProduto}" class="card-img-top" alt="${nomeProduto}" />
+        <div class="${status == false ? "card" : "card comprado"}">
+          <img src="${fotoProduto}" class="card-img-top" alt="${nomeProduto}" style="${
+        status == false ? "" : "filter: grayscale(100%);"
+      }"/>
           <div class="card-body">
             <h5 class="card-title">${nomeProduto}</h5>
             <p class="card-text">R$${valorProduto}</p>
-            <p class="subtitle">Loja recomendada:</p>
-            <div class="lojas">
+            <p class="subtitle" style="${
+              status == false ? "" : "display: none;"
+            }">Loja recomendada:</p>
+            <div class="lojas" style="${
+              status == false ? "" : "display: none;"
+            }">
               <a href="${linkLoja}" target="_blank" data-bs-toggle="modal" data-bs-target="#modalComunicarNoivos">
                 <img src="${
                   imgLoja === "whatsapp" ? logoZap : imgLoja
                 }" class="lojas-icon" alt="Loja" title="Loja" />
               </a>
             </div>
-            <p class="subtitle observacao" ${
-              observacao === null ? 'style="display: none;"' : ""
-            }>
+            <p class="subtitle observacao" style="${
+              status == false ? "" : "display: none;"
+            }" ${observacao === null ? 'style="display: none;"' : ""}>
                 Observação:
                 <span
                   >${observacao}</span
                 >
             </p>
-            <button class="btn btn-fucsia btn-comprei" ${
-              imgLoja === "whatsapp" ? 'style="display: none;"' : ""
-            } type="button" data-bs-toggle="modal" data-bs-target="#modalComprei" data-nome="${nomeProduto}">Comprei</button>
+            <button class="btn btn-fucsia btn-comprei" style="${
+              status == false ? "" : "display: none;"
+            }" ${
+        imgLoja === "whatsapp" ? 'style="display: none;"' : ""
+      } type="button" data-bs-toggle="modal" data-bs-target="#modalComprei" data-nome="${nomeProduto}">Comprei</button>
           </div>
         </div>
       `;
@@ -187,33 +219,43 @@ function montaGridPresentes(presentes, idSection) {
       const valorProduto = presente.valor;
       const fotoProduto = presente.foto;
       const observacao = presente.observacao;
+      const status = presente.comprado;
+
       const logoZap = "/imgs/logoZap.png";
 
       const eletrosContent = `
-        <div class="card">
-          <img src="${fotoProduto}" class="card-img-top" alt="${nomeProduto}" />
+        <div class="${status == false ? "card" : "card comprado"}">
+          <img src="${fotoProduto}" class="card-img-top" alt="${nomeProduto}" style="${
+        status == false ? "" : "filter: grayscale(100%);"
+      }"/>
           <div class="card-body">
             <h5 class="card-title">${nomeProduto}</h5>
             <p class="card-text">R$${valorProduto}</p>
-            <p class="subtitle">Loja recomendada:</p>
-            <div class="lojas">
+            <p class="subtitle" style="${
+              status == false ? "" : "display: none;"
+            }">Loja recomendada:</p>
+            <div class="lojas" style="${
+              status == false ? "" : "display: none;"
+            }">
               <a href="${linkLoja}" target="_blank" data-bs-toggle="modal" data-bs-target="#modalComunicarNoivos">
                 <img src="${
                   imgLoja === "whatsapp" ? logoZap : imgLoja
                 }" class="lojas-icon" alt="Loja" title="Loja" />
               </a>
             </div>
-            <p class="subtitle observacao" ${
-              observacao === null ? 'style="display: none;"' : ""
-            }>
+            <p class="subtitle observacao" style="${
+              status == false ? "" : "display: none;"
+            }" ${observacao === null ? 'style="display: none;"' : ""}>
                 Observação:
                 <span
                   >${observacao}</span
                 >
             </p>
-            <button class="btn btn-fucsia btn-comprei" ${
-              imgLoja === "whatsapp" ? 'style="display: none;"' : ""
-            } type="button" data-bs-toggle="modal" data-bs-target="#modalComprei" data-nome="${nomeProduto}">Comprei</button>
+            <button class="btn btn-fucsia btn-comprei" style="${
+              status == false ? "" : "display: none;"
+            }" ${
+        imgLoja === "whatsapp" ? 'style="display: none;"' : ""
+      } type="button" data-bs-toggle="modal" data-bs-target="#modalComprei" data-nome="${nomeProduto}">Comprei</button>
           </div>
         </div>
       `;
