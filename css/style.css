@@ -65,6 +65,15 @@ hr {
   margin: 0;
 }
 
+.modal-backdrop {
+  --bs-backdrop-zindex: 0 !important;
+  z-index: var(--bs-backdrop-zindex) !important;
+}
+
+.modal-content {
+  color: black;
+}
+
 .navbar {
   background-color: var(--corPrincipal) !important;
 }
