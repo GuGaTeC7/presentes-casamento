@@ -16,6 +16,48 @@ document.querySelectorAll(".dropdown-menu .dropdown-item").forEach((item) => {
   });
 });
 
+// Função que inicia o tutorial
+async function iniciarTutorial() {
+  // Espera o carregamento da página e garante que os elementos estão prontos
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  // Mostra o card do tutorial
+  document.getElementById('cardTutorial').style.display = 'block';
+
+  // Inicia o tutorial com intro.js
+  introJs().setOptions({
+    steps: [
+      {
+        element: document.querySelector('.title-lista'),
+        title: "Olá!",
+        intro: "Agora faremos um breve tutorial para esclarecer como deve ser feita a utilização do site."
+      },
+      {
+        element: document.querySelector('.first'),
+        intro: 'Os produtos estão separados por tópico e podem ser acessados rapidamente pelo menu lateral para faciliar a navegação.'
+      },
+      {
+        element: document.querySelector('#cardTutorial'),
+        intro: 'Aqui está o card do produto. Você pode visualizar informações e clicar em "Comprei".'
+      },
+      {
+        element: document.querySelector('.third'),
+        intro: 'Nos cards você pode ver os detalhes dos presentes.'
+      }
+    ],
+    showProgress: true,
+    // Evento que será chamado quando o tutorial for finalizado
+    oncomplete: function () {
+      // Esconde o cardTutorial após o fim do tutorial
+      document.getElementById('cardTutorial').style.display = 'none';
+    }
+  }).start();
+}
+
+
+
+// document.addEventListener("DOMContentLoaded", iniciarTutorial);
+
 // Consumir API para obter os presentes
 async function getPresentes(idCategoria, idSection) {
   try {
@@ -24,17 +66,13 @@ async function getPresentes(idCategoria, idSection) {
         idCategoria
     );
 
-    // Verifica se a resposta da requisição é válida
     if (!response.ok) {
-      throw new Error(
-        `Erro na requisição: ${response.status} - ${response.statusText}`
-      );
+      throw new Error(`Erro na requisição: ${response.status} - ${response.statusText}`);
     }
 
     const data = await response.json();
-    console.log(data); // Imprime os presentes no console do navegador com data
-
     montaGridPresentes(data, idSection);
+
   } catch (error) {
     console.error("Erro ao buscar presentes:", error);
   }
@@ -70,7 +108,7 @@ function montaGridPresentes(presentes, idSection) {
             <p class="subtitle" style="${
               status == false ? "" : "display: none;"
             }">Loja recomendada:</p>
-            <div class="lojas" style="${
+            <div class="lojas fourth" style="${
               status == false ? "" : "display: none;"
             }">
               <a href="${linkLoja}" target="_blank">
@@ -318,6 +356,8 @@ function hideLoader() {
 
 // Chama a função para obter os presentes da categoria com ID 1 (Eletrodomésticos)
 getPresentes(1, 1);
+iniciarTutorial();
+
 // Chama a função para obter os presentes da categoria com ID 2 (Cozinha)
 getPresentes(2, 2);
 // Chama a função para obter os presentes da categoria com ID 3 (Casa)
