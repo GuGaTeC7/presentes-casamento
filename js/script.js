@@ -18,45 +18,116 @@ document.querySelectorAll(".dropdown-menu .dropdown-item").forEach((item) => {
 
 // Função que inicia o tutorial
 async function iniciarTutorial() {
-  // Espera o carregamento da página e garante que os elementos estão prontos
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  // Adicionando o botão de "Pular Tutorial"
+  const skipButton = document.createElement('button');
+  skipButton.innerText = 'Pular Tutorial';
+  skipButton.style.position = 'fixed';
+  skipButton.style.top = '10px';
+  skipButton.style.right = '10px';
+  skipButton.style.padding = '10px';
+  skipButton.style.backgroundColor = '#da008e';
+  skipButton.style.color = 'white';
+  skipButton.style.border = 'none';
+  skipButton.style.borderRadius = '5px';
+  skipButton.style.cursor = 'pointer';
 
-  // Mostra o card do tutorial
-  document.getElementById('cardTutorial').style.display = 'block';
+  // Adicionando o botão à página
+  document.body.appendChild(skipButton);
 
-  // Inicia o tutorial com intro.js
+  // Função para pular o tutorial
+  skipButton.addEventListener('click', () => {
+    introJs().exit(); // Encerra o tutorial quando o botão é clicado
+  });
+
+  // Iniciando o tutorial
   introJs().setOptions({
     steps: [
       {
         element: document.querySelector('.title-lista'),
-        title: "Olá!",
-        intro: "Agora faremos um breve tutorial para esclarecer como deve ser feita a utilização do site."
+        title: "Bem-vindo!",
+        intro: "Este é um tutorial rápido para ajudá-lo a entender como navegar e utilizar o site."
       },
       {
-        element: document.querySelector('.first'),
-        intro: 'Os produtos estão separados por tópico e podem ser acessados rapidamente pelo menu lateral para faciliar a navegação.'
+        title: "Produto Exemplo",
+        intro: `
+          <div class="card" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; display: flex; align-items: center; margin-bottom: 5px">
+            <img src="https://a-static.mlcdn.com.br/800x560/jogo-de-copos-de-vidro-transparente-simetria-370ml-6-pecas-casambiente/globaleletro/4483p/121eda1394fe9573f0969bc357548683.jpeg" class="card-img-top" alt="Produto" style="width: 130px; border-radius: 10px;">
+            <div class="card-body" style="padding: 10px 0 5px 0px;">
+              <h5 class="card-title" style="font-size: 1.1rem;">Jogo de Copos de Vidro</h5>
+              <p class="card-text" style="font-size: 1rem;">R$ 52,71</p>
+            </div>
+            <p class="subtitle" style="font-size: 95%; margin:0;">Loja(s) recomendada(s):</p>
+            <div class="lojas">
+              <a href="#" target="_blank">
+                <img src="https://raw.githubusercontent.com/GuGaTeC7/API-viagens-aula/refs/heads/main/magalu_logo.png" class="lojas-icon" alt="Magazine Luiza" title="Magazine Luiza" />
+              </a>
+            </div>
+            <a href="#" class="btn btn-primary" style="margin-top: 15px; border: none; background-color: #da008e; color: #ffffff;">Comprei</a>
+          </div>
+          <p style="text-align: center;">Aqui você verá diversos <b>cards</b> com sugestões de produtos como presentes.</p>
+        `
       },
       {
-        element: document.querySelector('#cardTutorial'),
-        intro: 'Aqui está o card do produto. Você pode visualizar informações e clicar em "Comprei".'
+        title: "Loja recomendada",
+        intro: `
+          <div class="card" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; display: flex; align-items: center; margin-bottom: 15px">
+            <p class="subtitle" style="font-size: 95%; margin:0;">Loja(s) recomendada(s):</p>
+            <div class="lojas">
+              <a href="#" target="_blank">
+                <img src="https://raw.githubusercontent.com/GuGaTeC7/API-viagens-aula/refs/heads/main/magalu_logo.png" class="lojas-icon" alt="Magazine Luiza" title="Magazine Luiza" />
+              </a>
+            </div>
+          </div>
+          <p style="text-align: center;">Clique nas lojas recomendadas para acessar diretamente o site da loja onde o produto está disponível.</p>
+        `
       },
       {
-        element: document.querySelector('.third'),
-        intro: 'Nos cards você pode ver os detalhes dos presentes.'
+        title: "Realizando a compra",
+        intro: `
+          <p style="font-size: 0.9rem;">Para facilitar sua compra, envie para o seguinte endereço:</p>
+          <p style="font-size: 0.9rem; margin-top: 20px; color: black; text-align: center;">📍 <a href="https://maps.app.goo.gl/mMNLeBB664CeN13d9" target="__blank" style="text-decoration: none;">R. Cel. Amaro Sobrinho, 553 - Vila Carrão, São Paulo - SP, 03448-120</a></p>
+          <p style="text-align: center;">Use esse endereço para o envio do presente.</p>
+        `
+      },
+      {
+        title: "Confirmando a Compra",
+        intro: `
+          <p style="text-align: center;">Depois de comprar, clique no botão "Comprei" para confirmar.</p>
+          <div class="card" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; display: flex; align-items: center;">
+            <a href="#" class="btn btn-primary" style="border: none; background-color: #da008e; color: #ffffff;">Comprei</a>
+          </div>
+          <p style="text-align: center;">Depois disso, você pode comunicar a compra ao noivo/noiva através do modal que aparecerá.</p>
+        `
+      },
+      {
+        title: "Itens Comprados",
+        intro: `
+          <div class="card comprado" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; display: flex; align-items: center; margin-bottom: 15px;">
+          </div>
+          <p style="text-align: center;">Os cards que possuem a tag <b>comprado</b> indicam que o produto já foi adquirido. Eles não devem ser comprados novamente.</p>
+        `
+      },
+      {
+        title: "Finalizando",
+        intro: `
+        <p style="text-align: center;">Parabéns!</p>
+        <p style="text-align: center;">Agora você sabe como usar o site. Aproveite e faça boas compras!</p>
+        `
       }
     ],
     showProgress: true,
-    // Evento que será chamado quando o tutorial for finalizado
-    oncomplete: function () {
-      // Esconde o cardTutorial após o fim do tutorial
-      document.getElementById('cardTutorial').style.display = 'none';
-    }
+    unsafeHtml: true, // Permite exibir HTML nos tooltips
+    nextLabel: "Próximo",
+    prevLabel: "Voltar",
+    exitAnimation: 'fade', // Animação de saída
+    enterAnimation: 'bounceIn', // Animação de entrada
+    tooltipPosition: 'auto', // Posicionamento automático
+    tooltipClass: 'large-tooltip', // Classe para o tooltip maior
   }).start();
 }
 
 
-
-// document.addEventListener("DOMContentLoaded", iniciarTutorial);
+document.addEventListener("DOMContentLoaded", iniciarTutorial);
 
 // Consumir API para obter os presentes
 async function getPresentes(idCategoria, idSection) {
@@ -67,12 +138,13 @@ async function getPresentes(idCategoria, idSection) {
     );
 
     if (!response.ok) {
-      throw new Error(`Erro na requisição: ${response.status} - ${response.statusText}`);
+      throw new Error(
+        `Erro na requisição: ${response.status} - ${response.statusText}`
+      );
     }
 
     const data = await response.json();
     montaGridPresentes(data, idSection);
-
   } catch (error) {
     console.error("Erro ao buscar presentes:", error);
   }
@@ -356,8 +428,6 @@ function hideLoader() {
 
 // Chama a função para obter os presentes da categoria com ID 1 (Eletrodomésticos)
 getPresentes(1, 1);
-iniciarTutorial();
-
 // Chama a função para obter os presentes da categoria com ID 2 (Cozinha)
 getPresentes(2, 2);
 // Chama a função para obter os presentes da categoria com ID 3 (Casa)

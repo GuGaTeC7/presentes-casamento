@@ -65,6 +65,10 @@ hr {
   margin: 0;
 }
 
+.introjs-tooltiptext {
+  padding: 15px !important;
+}
+
 .modal-backdrop {
   --bs-backdrop-zindex: 0 !important;
   z-index: var(--bs-backdrop-zindex) !important;
@@ -163,9 +167,39 @@ hr {
   position: relative;
 }
 
-.card.comprado::after {
+.introjs-tooltip {
+  border: 3px double #da008e !important;
+}
+
+.introjs-button {
+  background-color: #da008e !important;
+  color: #ffffff !important;
+  text-shadow: none;
+}
+
+.introjs-button:hover {
+  background-color: #ae0172 !important;
+  color: #ffffff !important;
+  text-shadow: none;
+}
+
+.introjs-tooltip .card.comprado::after {
   content: "Comprado";
-  position: absolute;
+  position: initial;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+.card.comprado::after {
+  --position-after: absolute;
+  content: "Comprado";
+  position: var(--position-after);
   top: 10px;
   right: 10px;
   background-color: red;
