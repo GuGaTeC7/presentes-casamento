@@ -70,7 +70,7 @@ async function iniciarTutorial() {
       {
         title: "Loja recomendada",
         intro: `
-          <div class="card" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; display: flex; align-items: center; margin-bottom: 15px">
+          <div class="card" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; display: flex; align-items: center; margin-bottom: 5px">
             <p class="subtitle" style="font-size: 95%; margin:0;">Loja(s) recomendada(s):</p>
             <div class="lojas">
               <a href="#" target="_blank">
@@ -78,7 +78,8 @@ async function iniciarTutorial() {
               </a>
             </div>
           </div>
-          <p style="text-align: center;">Clique nas lojas recomendadas para acessar diretamente o site da loja onde o produto está disponível.</p>
+          <p style="text-align: center; font-size: 1rem; margin: 0 0 10px 0;">Clique nas lojas recomendadas para acessar diretamente o site da loja onde o produto está disponível.</p>
+          <p style="text-align: center; font-size: 0.8rem; border: 3px dotted #df219d; padding: 4px; margin: 0;"><i><b>se o produto não estiver disponível na loja, sinta-se à vontade para escolhê-lo em outra.<b></i></p>
         `
       },
       {
@@ -86,7 +87,7 @@ async function iniciarTutorial() {
         intro: `
           <p style="font-size: 0.9rem;">Para facilitar sua compra, envie para o seguinte endereço:</p>
           <p style="font-size: 0.9rem; margin-top: 20px; color: black; text-align: center;">📍 <a href="https://maps.app.goo.gl/mMNLeBB664CeN13d9" target="__blank" style="text-decoration: none;">R. Cel. Amaro Sobrinho, 553 - Vila Carrão, São Paulo - SP, 03448-120</a></p>
-          <p style="text-align: center;">Use esse endereço para o envio do presente.</p>
+          <p style="text-align: center; font-size: 0.9rem; ">Use esse endereço para o envio do presente.</p>
         `
       },
       {
@@ -123,6 +124,7 @@ async function iniciarTutorial() {
     enterAnimation: 'bounceIn', // Animação de entrada
     tooltipPosition: 'auto', // Posicionamento automático
     tooltipClass: 'large-tooltip', // Classe para o tooltip maior
+    doneLabel: "Finalizar"
   }).start();
 }
 
