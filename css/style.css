@@ -88,6 +88,40 @@ hr {
   filter: brightness(20%);
 }
 
+.carousel-item img {
+  width: 300px;
+  height: auto; /* Mantém a proporção */
+  object-fit: cover; /* Cobre o espaço do contêiner */
+}
+
+.carousel-caption {
+  position: absolute;
+  bottom: 20px; /* Ajuste conforme necessário */
+  left: 15px; /* Ajuste conforme necessário */
+  right: 15px; /* Ajuste conforme necessário */
+  color: white !important; /* Cor do texto */
+  text-align: center; /* Centraliza o texto */
+  z-index: 10; /* Garante que a legenda fique acima da imagem */
+}
+
+.carousel-dark .carousel-control-next-icon, .carousel-dark .carousel-control-prev-icon {
+  filter: none !important;
+}
+
+.carousel-dark .carousel-indicators [data-bs-target] {
+  background-color: #ffffff;
+}
+
+.carousel-item-next, .carousel-item-prev, .carousel-item.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-inner h6 {
+  text-align: center;
+}
+
 /* Estilo para suavizar a transição do dropdown */
 .dropdown-menu {
   opacity: 0;
