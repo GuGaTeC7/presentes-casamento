@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Meow+Script&family=Poiret+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 /* Cores do projeto */
 :root {
   --corPrincipal: #df219d;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -31,7 +33,8 @@ main {
   background-size: cover;
   background-position: center;
   background-repeat: initial;
-  background-attachment: fixed; /* Faz o fundo ficar fixo enquanto rola a página */
+  background-attachment: fixed;
+  /* Faz o fundo ficar fixo enquanto rola a página */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,14 +50,16 @@ main::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8); /* Adiciona um escurecimento */
+  background-color: rgba(0, 0, 0, 0.8);
+  /* Adiciona um escurecimento */
   z-index: 1;
 }
 
-main > * {
+main>* {
   position: relative;
   z-index: 2;
-  color: white; /* Garante que o texto fique visível */
+  color: white;
+  /* Garante que o texto fique visível */
 }
 
 body {
@@ -88,6 +93,16 @@ hr {
   filter: brightness(20%);
 }
 
+/* Estilo para o carrossel */
+.carousel {
+  margin-top: 55px;
+}
+
+/* Transição suave para os slides */
+.carousel-inner .carousel-item {
+  transition: transform .10s ease-in-out;
+}
+
 .carousel-item img {
   width: 300px;
   height: auto; /* Mantém a proporção */
@@ -96,15 +111,22 @@ hr {
 
 .carousel-caption {
   position: absolute;
-  bottom: 20px; /* Ajuste conforme necessário */
-  left: 15px; /* Ajuste conforme necessário */
-  right: 15px; /* Ajuste conforme necessário */
-  color: white !important; /* Cor do texto */
-  text-align: center; /* Centraliza o texto */
-  z-index: 10; /* Garante que a legenda fique acima da imagem */
+  bottom: 20px;
+  /* Ajuste conforme necessário */
+  left: 15px;
+  /* Ajuste conforme necessário */
+  right: 15px;
+  /* Ajuste conforme necessário */
+  color: white !important;
+  /* Cor do texto */
+  text-align: center;
+  /* Centraliza o texto */
+  z-index: 10;
+  /* Garante que a legenda fique acima da imagem */
 }
 
-.carousel-dark .carousel-control-next-icon, .carousel-dark .carousel-control-prev-icon {
+.carousel-dark .carousel-control-next-icon,
+.carousel-dark .carousel-control-prev-icon {
   filter: none !important;
 }
 
@@ -112,7 +134,9 @@ hr {
   background-color: #ffffff;
 }
 
-.carousel-item-next, .carousel-item-prev, .carousel-item.active {
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,11 +149,13 @@ hr {
 /* Estilo para suavizar a transição do dropdown */
 .dropdown-menu {
   opacity: 0;
-  transition: opacity 0.3s ease-in-out; /* Tempo e suavidade da transição */
+  transition: opacity 0.3s ease-in-out;
+  /* Tempo e suavidade da transição */
 }
 
 .dropdown-menu.show {
-  opacity: 1; /* Define a opacidade para quando estiver visível */
+  opacity: 1;
+  /* Define a opacidade para quando estiver visível */
 }
 
 /* Titulo */
@@ -185,6 +211,7 @@ hr {
   align-items: center;
   justify-content: center;
 }
+
 .card {
   width: 90%;
   height: 100%;
@@ -325,7 +352,7 @@ hr {
   animation: pulse 1.5s ease-in-out infinite;
 }
 
-p > span {
+p>span {
   font-weight: 300;
   font-size: 0.8rem;
   margin-bottom: 2px;
@@ -386,13 +413,18 @@ p > span {
 /* Animações */
 @keyframes pulse {
   0% {
-    transform: scale(1); /* Tamanho original */
+    transform: scale(1);
+    /* Tamanho original */
   }
+
   50% {
-    transform: scale(1.1); /* Aumenta em 10% */
+    transform: scale(1.1);
+    /* Aumenta em 10% */
   }
+
   100% {
-    transform: scale(1); /* Volta ao tamanho original */
+    transform: scale(1);
+    /* Volta ao tamanho original */
   }
 }
 
@@ -400,6 +432,7 @@ p > span {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
