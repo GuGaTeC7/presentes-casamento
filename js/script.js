@@ -42,11 +42,11 @@ async function iniciarTutorial() {
   // Iniciando o tutorial
   introJs().setOptions({
     steps: [
-      // {
-      //   element: document.querySelector('.title-lista'),
-      //   title: "Bem-vindo!",
-      //   intro: "Este é um tutorial rápido para ajudá-lo a entender como navegar e utilizar o site."
-      // },
+      {
+        element: document.querySelector('.title-lista'),
+        title: "Bem-vindo!",
+        intro: "Este é um tutorial rápido para ajudá-lo a entender como navegar e utilizar o site."
+      },
       {
         title: "Produto Exemplo",
         intro: `
