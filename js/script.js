@@ -211,7 +211,7 @@ function montaGridPresentes(presentes, idSection) {
     const cardsPresentesDiv = cozinhaSection.querySelector(".cards-presentes");
 
     // Limpa o conteúdo anterior da seção
-    cardsPresentesDiv.innerHTML = ""; // Limpa o conteúdo anterior dentro da div de cards
+    cardsPresentesDiv.innerHTML = ""; // Limpa o conteúdo anterior dentro da div de cards 
 
     // Lista da cozinha
     presentes.forEach((presente) => {
