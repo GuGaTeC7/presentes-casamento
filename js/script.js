@@ -42,27 +42,27 @@ async function iniciarTutorial() {
   // Iniciando o tutorial
   introJs().setOptions({
     steps: [
-      {
-        element: document.querySelector('.title-lista'),
-        title: "Bem-vindo!",
-        intro: "Este é um tutorial rápido para ajudá-lo a entender como navegar e utilizar o site."
-      },
+      // {
+      //   element: document.querySelector('.title-lista'),
+      //   title: "Bem-vindo!",
+      //   intro: "Este é um tutorial rápido para ajudá-lo a entender como navegar e utilizar o site."
+      // },
       {
         title: "Produto Exemplo",
         intro: `
-          <div class="card" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; display: flex; align-items: center; margin-bottom: 5px">
-            <img src="https://a-static.mlcdn.com.br/800x560/jogo-de-copos-de-vidro-transparente-simetria-370ml-6-pecas-casambiente/globaleletro/4483p/121eda1394fe9573f0969bc357548683.jpeg" class="card-img-top" alt="Produto" style="width: 130px; border-radius: 10px;">
-            <div class="card-body" style="padding: 10px 0 5px 0px;">
-              <h5 class="card-title" style="font-size: 1.1rem;">Jogo de Copos de Vidro</h5>
-              <p class="card-text" style="font-size: 1rem;">R$ 52,71</p>
+          <div class="card" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; display: flex; align-items: center; margin-bottom: 0">
+            <img src="https://a-static.mlcdn.com.br/800x560/jogo-de-copos-de-vidro-transparente-simetria-370ml-6-pecas-casambiente/globaleletro/4483p/121eda1394fe9573f0969bc357548683.jpeg" class="card-img-top" alt="Produto" style="width: 90px; border-radius: 10px;">
+            <div class="card-body" style="padding: 0 0 5px 0px;">
+              <h5 class="card-title" style="font-size: 0.8rem; margin: 0;">Jogo de Copos de Vidro</h5>
+              <p class="card-text" style="font-size: 0.8rem;">R$ 52,71</p>
             </div>
-            <p class="subtitle" style="font-size: 95%; margin:0;">Loja(s) recomendada(s):</p>
+            <p class="subtitle" style="font-size: 80%; margin:0;">Loja(s) recomendada(s):</p>
             <div class="lojas">
               <a href="#" target="_blank">
-                <img src="https://raw.githubusercontent.com/GuGaTeC7/API-viagens-aula/refs/heads/main/magalu_logo.png" class="lojas-icon" alt="Magazine Luiza" title="Magazine Luiza" />
+                <img src="https://raw.githubusercontent.com/GuGaTeC7/API-viagens-aula/refs/heads/main/magalu_logo.png" class="lojas-icon" style="width: 35px;" alt="Magazine Luiza" title="Magazine Luiza" />
               </a>
             </div>
-            <a href="#" class="btn btn-primary" style="margin-top: 15px; border: none; background-color: #da008e; color: #ffffff;">Comprei</a>
+            <a href="#" class="btn" style="font-size: 9px; margin-top: 10px; border: none; background-color: #da008e !important; color: #ffffff;">Comprei</a>
           </div>
           <p style="text-align: center;">Aqui você verá diversos <b>cards</b> com sugestões de produtos como presentes.</p>
         `
