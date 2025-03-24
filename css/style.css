@@ -365,6 +365,45 @@ p>span {
   transition: all 0.3s ease-in-out;
 }
 
+/* Input Busca */
+/* Estilo do container de busca */
+.search-container {
+  position: relative; /* Para posicionar o ícone dentro do input */
+  width: 100%; /* Largura total do container */
+  max-width: 400px; /* Largura máxima do input */
+  margin: 0 0 20px 0; /* Centraliza o container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo do input de busca */
+#search-input {
+  width: 100%; /* Largura total do input */
+  padding: 10px 40px 10px 40px; /* Espaçamento interno */
+  border: 1px solid #ddd; /* Borda do input */
+  border-radius: 5px; /* Bordas arredondadas */
+  font-size: 1rem; /* Tamanho da fonte */
+  transition: border-color 0.3s; /* Transição suave para a borda */
+}
+
+/* Efeito de foco no input */
+#search-input:focus {
+  border-color: #da008e; /* Cor da borda ao focar */
+  outline: none; /* Remove o contorno padrão */
+}
+
+/* Estilo do ícone de busca */
+.search-icon {
+  position: absolute; /* Posiciona o ícone dentro do input */
+  left: 10px; /* Distância da esquerda */
+  top: 50%; /* Centraliza verticalmente */
+  transform: translateY(-50%); /* Ajusta a posição vertical */
+  font-size: 1.2rem; /* Tamanho do ícone */
+  color: #aaa; /* Cor do ícone */
+  pointer-events: none; /* Ignora eventos de clique no ícone */
+}
+
 /* Loading */
 #loading {
   display: flex;

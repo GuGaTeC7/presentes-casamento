@@ -428,6 +428,25 @@ function hideLoader() {
   loader.style.display = "none";
 }
 
+// Função de busca
+function buscarProdutos() {
+  const input = document.getElementById("search-input").value.toLowerCase();
+  const cards = document.querySelectorAll(".card"); // Seleciona todos os cards
+
+  cards.forEach(card => {
+      const nomeProduto = card.querySelector(".card-title").textContent.toLowerCase(); // Obtém o nome do produto
+      if (nomeProduto.includes(input)) {
+          card.style.display = ""; // Mostra o card se o nome corresponder
+      } else {
+          card.style.display = "none"; // Oculta o card se não corresponder
+      }
+  });
+}
+
+// Evento de escuta para o campo de busca
+document.getElementById("search-input").addEventListener("input", buscarProdutos);
+
+
 // Chama a função para obter os presentes da categoria com ID 1 (Eletrodomésticos)
 getPresentes(1, 1);
 // Chama a função para obter os presentes da categoria com ID 2 (Cozinha)
