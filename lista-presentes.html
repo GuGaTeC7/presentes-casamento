@@ -9,6 +9,7 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/introjs.min.css"
     rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- <link href="https://unpkg.com/intro.js/themes/introjs-dark.css" rel="stylesheet"> -->
 
   <link rel="stylesheet" href="css/style.css" />
@@ -56,6 +57,9 @@
                   <li>
                     <a class="dropdown-item" href="#festa">Festa</a>
                   </li>
+                  <li>
+                    <a class="dropdown-item" href="#viagem">Viagem</a>
+                  </li>
                 </ul>
               </li>
               <li class="nav-item">
@@ -87,13 +91,39 @@
           sugestões para lhe ajudar a escolher um presente!
         </p>
       </div>
-      <div class="search-container">
-        <input type="text" id="search-input" placeholder="Procurar um presente..." />
-        <span class="search-icon">&#128269;</span> <!-- Ícone de busca -->
+
+    </div>
+
+    <div class="card qr-pix">
+      <button class="btn btn-collapse collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#missaoCollapse" id="toggleButton">
+        MISSÃO LUA DE MEL
+        <i class="fas fa-chevron-down arrow"></i> <!-- Ícone de seta para baixo -->
+      </button>
+
+      <div class="collapse" id="missaoCollapse">
+        <div class="card missao-lua-de-mel">
+          <img src="/imgs/qr-C6.jpg" class="card-img-top" alt="QR Code PIX" />
+          <div class="card-body">
+            <h5 class="card-title typing" id="title"></h5> <!-- Título animado -->
+            <p class="card-text">
+              Que tal nos ajudar a decolar para a viagem dos nossos sonhos? 🛫 <br>
+              Com um PIX, você faz parte desse momento especial e nos leva ainda mais longe! 💖
+            </p>
+            <hr>
+            <b>PIX: <i id="pixNumber">+55 11 96338-0372</i></b>
+            <button id="copyButton" class="btn btn-primary mt-2">
+              <i class="fas fa-copy" id="copyIcon"></i> Copiar PIX
+            </button>
+            <span id="copyMessage" class="text-success" style="display: none;">Copiado!</span>
+          </div>
+        </div>
       </div>
     </div>
-    <div id="card-container" class="cards-presentes">
-        <!-- Os cards já devem estar aqui -->
+
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Procurar um presente..." />
+      <span class="search-icon">&#128269;</span> <!-- Ícone de busca -->
     </div>
 
     <!-- Presentes -->
@@ -121,92 +151,107 @@
             <div class="spinner"></div>
           </div>
         </div>
+    </section>
 
-        <!-- Os cards serão inseridos aqui pelo JavaScript -->
-      </div>
 
-      <!-- Casa -->
-      <section class="topico" id="casa">
-        <h1>Casa</h1>
-        <div class="cards-presentes">
-          <!-- Card Loading -->
-          <div class="card carregando">
-            <h5 class="card-title">carregando...</h5>
-            <div id="loading">
-              <div class="spinner"></div>
-            </div>
+    <!-- Os cards serão inseridos aqui pelo JavaScript -->
+    </div>
+
+    <!-- Casa -->
+    <section class="topico" id="casa">
+      <h1>Casa</h1>
+      <div class="cards-presentes">
+        <!-- Card Loading -->
+        <div class="card carregando">
+          <h5 class="card-title">carregando...</h5>
+          <div id="loading">
+            <div class="spinner"></div>
           </div>
-
-          <!-- Os cards serão inseridos aqui pelo JavaScript -->
         </div>
+    </section>
 
-        <!-- Festa -->
-        <section class="topico" id="festa">
-          <h1>Festa</h1>
-          <div class="cards-presentes">
-            <!-- Card Loading -->
-            <div class="card carregando">
-              <h5 class="card-title">carregando...</h5>
-              <div id="loading">
-                <div class="spinner"></div>
-              </div>
-            </div>
 
-            <!-- Os cards serão inseridos aqui pelo JavaScript -->
+    <!-- Os cards serão inseridos aqui pelo JavaScript -->
+    </div>
+
+    <!-- Festa -->
+    <section class="topico" id="festa">
+      <h1>Festa</h1>
+      <div class="cards-presentes">
+        <!-- Card Loading -->
+        <div class="card carregando">
+          <h5 class="card-title">carregando...</h5>
+          <div id="loading">
+            <div class="spinner"></div>
           </div>
+        </div>
+    </section>
 
-          <!-- Modal Confirmar Compra -->
-          <div class="modal fade" id="modalComprei" tabindex="-1" aria-labelledby="modalCompreiLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="modalCompreiLabel">
-                    Confirmação de Compra
-                  </h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  Tem certeza que deseja marcar o item "<span id="produtoCompradoNome"></span>" como comprado?
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    Cancelar
-                  </button>
-                  <button type="button" class="btn" style="background-color: #df219d; color: white" id="confirmarCompra"
-                    data-bs-toggle="modal" data-bs-target="#modalComunicarNoivos">
-                    Confirmar
-                  </button>
-                </div>
-              </div>
-            </div>
+    <!-- Viagem -->
+    <section class="topico" id="viagem">
+      <h1>Viagem</h1>
+      <div class="cards-presentes">
+        <!-- Card Loading -->
+        <div class="card carregando">
+          <h5 class="card-title">carregando...</h5>
+          <div id="loading">
+            <div class="spinner"></div>
           </div>
+        </div>
+    </section>
 
-          <!-- Modal Contactar Noivos -->
-          <div class="modal fade" id="modalComunicarNoivos" tabindex="-1" aria-labelledby="modalComunicarNoivosLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="modalComunicarNoivosLabel">
-                    Comunicar noivos
-                  </h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body comunicar-noivos">
-                  <a href="https://wa.me/5511986222839?text=${mensagemWhatsApp}" target="_blank" class="btn btn-success"
-                    id="btnComunicarNoiva"><img
-                      src="https://img.icons8.com/?size=100&id=ocJH9t0GGj7Y&format=png&color=FFFFFF" alt="whatsapp"
-                      class="logo-whatsapp" />Noiva</a>
-                  <a href="https://wa.me/5511986222839?text=${mensagemWhatsApp}" target="_blank" class="btn btn-success"
-                    id="btnComunicarNoivo"><img
-                      src="https://img.icons8.com/?size=100&id=ocJH9t0GGj7Y&format=png&color=FFFFFF" alt="whatsapp"
-                      class="logo-whatsapp" />Noivo</a>
-                </div>
-              </div>
-            </div>
+
+    <!-- Os cards serão inseridos aqui pelo JavaScript -->
+    </div>
+
+    <!-- Modal Confirmar Compra -->
+    <div class="modal fade" id="modalComprei" tabindex="-1" aria-labelledby="modalCompreiLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalCompreiLabel">
+              Confirmação de Compra
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-        </section>
+          <div class="modal-body">
+            Tem certeza que deseja marcar o item "<span id="produtoCompradoNome"></span>" como comprado?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="button" class="btn" style="background-color: #df219d; color: white" id="confirmarCompra"
+              data-bs-toggle="modal" data-bs-target="#modalComunicarNoivos">
+              Confirmar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Contactar Noivos -->
+    <div class="modal fade" id="modalComunicarNoivos" tabindex="-1" aria-labelledby="modalComunicarNoivosLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalComunicarNoivosLabel">
+              Comunicar noivos
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body comunicar-noivos">
+            <a href="https://wa.me/5511986222839?text=${mensagemWhatsApp}" target="_blank" class="btn btn-success"
+              id="btnComunicarNoiva"><img src="https://img.icons8.com/?size=100&id=ocJH9t0GGj7Y&format=png&color=FFFFFF"
+                alt="whatsapp" class="logo-whatsapp" />Noiva</a>
+            <a href="https://wa.me/5511986222839?text=${mensagemWhatsApp}" target="_blank" class="btn btn-success"
+              id="btnComunicarNoivo"><img src="https://img.icons8.com/?size=100&id=ocJH9t0GGj7Y&format=png&color=FFFFFF"
+                alt="whatsapp" class="logo-whatsapp" />Noivo</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer class="footer bg-dark text-light py-1">

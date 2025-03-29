@@ -105,8 +105,10 @@ hr {
 
 .carousel-item img {
   width: 300px;
-  height: auto; /* Mantém a proporção */
-  object-fit: cover; /* Cobre o espaço do contêiner */
+  height: auto;
+  /* Mantém a proporção */
+  object-fit: cover;
+  /* Cobre o espaço do contêiner */
 }
 
 .carousel-caption {
@@ -217,7 +219,6 @@ hr {
   width: 90%;
   height: 100%;
   margin-top: 25px;
-  margin-bottom: 30px;
 }
 
 .carregando {
@@ -283,7 +284,6 @@ hr {
 
 .card:nth-child(1) {
   margin-top: 0;
-  margin-bottom: 30px;
 }
 
 .card-body {
@@ -301,7 +301,7 @@ hr {
 .btn-fucsia {
   background-color: var(--corPrincipal);
   color: #ffffff;
-  margin-top: 5;
+  margin-top: 5px;
 }
 
 .btn-fucsia:hover {
@@ -365,13 +365,162 @@ p>span {
   transition: all 0.3s ease-in-out;
 }
 
+/* Collapse Lua de Mel */
+#missaoCollapse .card-body {
+  flex: none;
+  padding: 5px 0 0 0;
+  color: var(--bs-card-color);
+}
+
+.qr-pix {
+  background-color: rgba(0, 0, 0, 0) !important;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+#missaoCollapse .card-img-top {
+  padding: 10px;
+}
+
+#missaoCollapse .card-title {
+  color: var(--corPrincipal);
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-bottom: 0;
+}
+
+#missaoCollapse .card-body {
+  text-align: center;
+}
+
+#missaoCollapse .card {
+  margin-bottom: 20px !important;
+}
+
+.missao-lua-de-mel {
+  border: none; 
+  overflow: hidden; 
+  display: flex; 
+  align-items: center;
+}
+
+.btn-collapse {
+  background-color: var(--corPrincipal) !important;
+  color: white;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  transition: border-radius 0.1s ease-in-out;
+}
+
+.btn-collapse:focus,
+.btn-collapse:active,
+.btn-collapse:not(.collapsed) {
+  background-color: var(--corPrincipal) !important;
+  color: white;
+}
+
+.btn-collapse:not(.collapsed) {
+  border-radius: 10px 10px 0 0;
+}
+
+
+.collapse {
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  justify-content: center;
+  display: flex;
+  background-color: white;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  margin-bottom: 30px;
+}
+
+.collapse.show {
+  max-height: 1000px;
+  /* Valor grande o suficiente para expandir o conteúdo */
+  opacity: 1;
+}
+
+.missao-lua-de-mel {
+  border-radius: 0 0 10px 10px;
+}
+
+#copyButton {
+  transition: background-color 0.3s;
+}
+
+#copyButton:hover {
+  background-color: #0056b3;
+}
+
+#copyIcon {
+  margin-right: 3.5px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.6s ease; /* Transição suave e lenta */
+  margin-left: 8px; /* Espaço entre o texto e o ícone */
+}
+
+.btn-collapse:not(.collapsed) .arrow {
+  transform: rotate(180deg); /* Rotaciona a seta para cima quando expandida */
+}
+
+/* Animação de levitação */
+@keyframes levitate {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px); /* Sobe um pouco */
+  }
+  100% {
+    transform: translateY(0); /* Volta para a posição original */
+  }
+}
+
+.btn-collapse .arrow {
+  animation: levitate .3s ease-in-out infinite; /* Animação de levitação */
+}
+
+.btn-collapse.collapsed .arrow {
+  animation: levitate .8s ease-in-out infinite; /* Mantém a animação de levitação quando colapsado */
+}
+
+.btn-collapse:not(.collapsed) .arrow {
+  animation: none; /* Para a animação de levitação quando expandido */
+}
+
+.btn-collapse:active .arrow {
+  animation: none; /* Para a animação de levitação enquanto clicado */
+}
+
+hr {
+  width: 200px;
+  border: 1px solid var(--corPrincipal); /* Cor da borda */
+  margin: 5px 0 10px 0px;  /* Margem acima e abaixo */
+}
+
 /* Input Busca */
 /* Estilo do container de busca */
 .search-container {
-  position: relative; /* Para posicionar o ícone dentro do input */
-  width: 100%; /* Largura total do container */
-  max-width: 400px; /* Largura máxima do input */
-  margin: 0 0 20px 0; /* Centraliza o container */
+  position: relative;
+  /* Para posicionar o ícone dentro do input */
+  width: 100%;
+  /* Largura total do container */
+  max-width: 400px;
+  /* Largura máxima do input */
+  margin: 20px 0 10px 0;
+  /* Centraliza o container */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -379,29 +528,44 @@ p>span {
 
 /* Estilo do input de busca */
 #search-input {
-  width: 100%; /* Largura total do input */
-  padding: 10px 40px 10px 40px; /* Espaçamento interno */
-  border: 1px solid #ddd; /* Borda do input */
-  border-radius: 5px; /* Bordas arredondadas */
-  font-size: 1rem; /* Tamanho da fonte */
-  transition: border-color 0.3s; /* Transição suave para a borda */
+  width: 100%;
+  /* Largura total do input */
+  padding: 10px 40px 10px 40px;
+  /* Espaçamento interno */
+  border: 1px solid #ddd;
+  /* Borda do input */
+  border-radius: 5px;
+  /* Bordas arredondadas */
+  font-size: 1rem;
+  /* Tamanho da fonte */
+  transition: border-color 0.3s;
+  /* Transição suave para a borda */
 }
 
 /* Efeito de foco no input */
 #search-input:focus {
-  border-color: #da008e; /* Cor da borda ao focar */
-  outline: none; /* Remove o contorno padrão */
+  border-color: #da008e;
+  /* Cor da borda ao focar */
+  outline: none;
+  /* Remove o contorno padrão */
 }
 
 /* Estilo do ícone de busca */
 .search-icon {
-  position: absolute; /* Posiciona o ícone dentro do input */
-  left: 10px; /* Distância da esquerda */
-  top: 50%; /* Centraliza verticalmente */
-  transform: translateY(-50%); /* Ajusta a posição vertical */
-  font-size: 1.2rem; /* Tamanho do ícone */
-  color: #aaa; /* Cor do ícone */
-  pointer-events: none; /* Ignora eventos de clique no ícone */
+  position: absolute;
+  /* Posiciona o ícone dentro do input */
+  left: 10px;
+  /* Distância da esquerda */
+  top: 50%;
+  /* Centraliza verticalmente */
+  transform: translateY(-50%);
+  /* Ajusta a posição vertical */
+  font-size: 1.2rem;
+  /* Tamanho do ícone */
+  color: #aaa;
+  /* Cor do ícone */
+  pointer-events: none;
+  /* Ignora eventos de clique no ícone */
 }
 
 /* Loading */

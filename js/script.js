@@ -128,7 +128,6 @@ async function iniciarTutorial() {
   }).start();
 }
 
-
 document.addEventListener("DOMContentLoaded", iniciarTutorial);
 
 // Consumir API para obter os presentes
@@ -374,6 +373,64 @@ function montaGridPresentes(presentes, idSection) {
 
       cardsPresentesDiv.innerHTML += eletrosContent; // Adiciona o conteúdo do produto dentro da div de cards
     });
+  } else if (idSection === 5) {
+    const festaSection = document.getElementById("viagem");
+    const cardsPresentesDiv = festaSection.querySelector(".cards-presentes");
+
+    // Limpa o conteúdo anterior da seção
+    cardsPresentesDiv.innerHTML = ""; // Limpa o conteúdo anterior dentro da div de cards
+
+    // Lista da festa
+    presentes.forEach((presente) => {
+      const imgLoja = presente.img_loja;
+      const linkLoja = presente.link_loja;
+      const nomeProduto = presente.nome;
+      const valorProduto = presente.valor;
+      const fotoProduto = presente.foto;
+      const observacao = presente.observacao;
+      const status = presente.comprado;
+
+      const logoZap = "/imgs/logoZap.png";
+
+      const eletrosContent = `
+        <div class="${status == false ? "card" : "card comprado"}">
+          <img src="${fotoProduto}" class="card-img-top" alt="${nomeProduto}" style="${
+        status == false ? "" : "filter: grayscale(100%);"
+      }"/>
+          <div class="card-body">
+            <h5 class="card-title">${nomeProduto}</h5>
+            <p class="card-text">R$${valorProduto}</p>
+            <p class="subtitle" style="${
+              status == false ? "" : "display: none;"
+            }">Loja recomendada:</p>
+            <div class="lojas" style="${
+              status == false ? "" : "display: none;"
+            }">
+              <a href="${linkLoja}" target="_blank" data-bs-toggle="modal" data-bs-target="#modalComunicarNoivos">
+                <img src="${
+                  imgLoja === "whatsapp" ? logoZap : imgLoja
+                }" class="lojas-icon" alt="Loja" title="Loja" />
+              </a>
+            </div>
+            <p class="subtitle observacao" style="${
+              status == false ? "" : "display: none;"
+            }" ${observacao === null ? 'style="display: none;"' : ""}>
+                Observação:
+                <span
+                  >${observacao}</span
+                >
+            </p>
+            <button class="btn btn-fucsia btn-comprei" style="${
+              status == false ? "" : "display: none;"
+            }" ${
+        imgLoja === "whatsapp" ? 'style="display: none;"' : ""
+      } type="button" data-bs-toggle="modal" data-bs-target="#modalComprei" data-nome="${nomeProduto}">Comprei</button>
+          </div>
+        </div>
+      `;
+
+      cardsPresentesDiv.innerHTML += eletrosContent; // Adiciona o conteúdo do produto dentro da div de cards
+    });
   }
 
   // Evento para abrir o modal com o nome do produto
@@ -423,6 +480,42 @@ function montaGridPresentes(presentes, idSection) {
     });
 }
 
+// Collapse Lua de Mel
+const titleText = "MISSÃO LUA DE MEL";
+const titleElement = document.getElementById("title");
+let index = 0;
+
+function type() {
+    if (index < titleText.length) {
+        titleElement.textContent += titleText.charAt(index);
+        index++;
+        setTimeout(type, 100); // Tempo entre cada letra (100ms)
+    }
+}
+
+// Inicia a animação de digitação ao clicar no botão
+document.getElementById("toggleButton").addEventListener("click", function() {
+    titleElement.textContent = ""; // Limpa o texto antes de iniciar a animação
+    index = 0; // Reinicia o índice
+    type(); // Inicia a animação de digitação
+}); 
+
+document.getElementById('copyButton').addEventListener('click', function() {
+  const pixNumber = document.getElementById('pixNumber').textContent;
+  navigator.clipboard.writeText(pixNumber).then(() => {
+    const copyIcon = document.getElementById('copyIcon');
+    copyIcon.classList.remove('fa-copy');
+    copyIcon.classList.add('fa-check');
+    const copyMessage = document.getElementById('copyMessage');
+    copyMessage.style.display = 'inline';
+    setTimeout(() => {
+      copyMessage.style.display = 'none';
+      copyIcon.classList.remove('fa-check');
+      copyIcon.classList.add('fa-copy');
+    }, 2000);
+  });
+});
+
 function hideLoader() {
   const loader = document.getElementById("loading");
   loader.style.display = "none";
@@ -446,7 +539,6 @@ function buscarProdutos() {
 // Evento de escuta para o campo de busca
 document.getElementById("search-input").addEventListener("input", buscarProdutos);
 
-
 // Chama a função para obter os presentes da categoria com ID 1 (Eletrodomésticos)
 getPresentes(1, 1);
 // Chama a função para obter os presentes da categoria com ID 2 (Cozinha)
@@ -455,3 +547,5 @@ getPresentes(2, 2);
 getPresentes(3, 3);
 // Chama a função para obter os presentes da categoria com ID 4 (Festa)
 getPresentes(4, 4);
+// Chama a função para obter os presentes da categoria com ID 5 (Viagem)
+getPresentes(5, 5);
