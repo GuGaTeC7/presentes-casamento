@@ -516,6 +516,16 @@ document.getElementById('copyButton').addEventListener('click', function() {
   });
 });
 
+// Lógica para mostrar/ocultar as informações de pagamento
+document.getElementById('infoIcon').addEventListener('click', function() {
+  const paymentInfo = document.getElementById('paymentInfo');
+  if (paymentInfo.style.display === 'none' || paymentInfo.style.display === '') {
+      paymentInfo.style.display = 'block'; // Mostra as informações
+  } else {
+      paymentInfo.style.display = 'none'; // Esconde as informações
+  }
+});
+
 function hideLoader() {
   const loader = document.getElementById("loading");
   loader.style.display = "none";

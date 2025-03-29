@@ -378,6 +378,34 @@ p>span {
   margin-bottom: 20px;
 }
 
+.qr-container {
+  position: relative; /* Para posicionar o ícone em relação à imagem */
+}
+
+.info-icon {
+  position: absolute;
+  top: 10px; /* Ajuste conforme necessário */
+  right: 10px; /* Ajuste conforme necessário */
+  cursor: pointer; /* Indica que é clicável */
+  font-size: 20px; /* Tamanho do ícone */
+  color: #007bff; /* Cor do ícone */
+}
+
+.payment-info {
+  display: none; /* Inicialmente escondido */
+  position: absolute;
+  top: 40px; /* Ajuste conforme necessário */
+  right: 10px; /* Ajuste conforme necessário */
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10; /* Para garantir que fique acima de outros elementos */
+}
+.payment-info .small, small {
+  font-size: .775em;
+}
+
 #missaoCollapse .card-img-top {
   padding: 10px;
 }
@@ -385,7 +413,7 @@ p>span {
 #missaoCollapse .card-title {
   color: var(--corPrincipal);
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1.9rem;
   margin-bottom: 0;
 }
 
