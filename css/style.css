@@ -59,7 +59,14 @@ main>* {
   position: relative;
   z-index: 2;
   color: white;
-  /* Garante que o texto fique visível */
+}
+
+section {
+  margin-top: 30px;
+}
+
+#eletrodomesticos {
+  margin-top: 0;
 }
 
 body {
