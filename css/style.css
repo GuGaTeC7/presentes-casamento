@@ -65,6 +65,7 @@ section {
   margin-top: 30px;
 }
 
+/* Essa section é a primeira */
 #eletrodomesticos {
   margin-top: 0;
 }
@@ -212,6 +213,14 @@ hr {
   display: flex;
   justify-content: center;
   text-align: center;
+}
+
+/* Filtros */
+.btn-group-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 5px;
 }
 
 /* Card */
@@ -385,31 +394,45 @@ p>span {
   margin-bottom: 20px;
 }
 
-.qr-container {
-  position: relative; /* Para posicionar o ícone em relação à imagem */
+#pixNumber {
+  position: relative;
+  /* Para posicionar o ícone em relação à imagem */
+
 }
 
 .info-icon {
   position: absolute;
-  top: 10px; /* Ajuste conforme necessário */
-  right: 10px; /* Ajuste conforme necessário */
-  cursor: pointer; /* Indica que é clicável */
-  font-size: 20px; /* Tamanho do ícone */
-  color: #007bff; /* Cor do ícone */
+  top: 10px;
+  /* Ajuste conforme necessário */
+  right: 7px;
+  /* Ajuste conforme necessário */
+  cursor: pointer;
+  /* Indica que é clicável */
+  font-size: 30px;
+  /* Tamanho do ícone */
+  color: #007bff;
+  /* Cor do ícone */
+  animation: pulse .3s ease-in-out infinite;
 }
 
 .payment-info {
-  display: none; /* Inicialmente escondido */
+  display: none;
+  /* Inicialmente escondido */
   position: absolute;
-  top: 40px; /* Ajuste conforme necessário */
-  right: 10px; /* Ajuste conforme necessário */
+  top: 40px;
+  /* Ajuste conforme necessário */
+  right: 10px;
+  /* Ajuste conforme necessário */
   background: white;
   border: 1px solid #ccc;
   padding: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 10; /* Para garantir que fique acima de outros elementos */
+  z-index: 10;
+  /* Para garantir que fique acima de outros elementos */
 }
-.payment-info .small, small {
+
+.payment-info .small,
+small {
   font-size: .775em;
 }
 
@@ -433,9 +456,9 @@ p>span {
 }
 
 .missao-lua-de-mel {
-  border: none; 
-  overflow: hidden; 
-  display: flex; 
+  border: none;
+  overflow: hidden;
+  display: flex;
   align-items: center;
 }
 
@@ -502,12 +525,15 @@ p>span {
 
 .arrow {
   display: inline-block;
-  transition: transform 0.6s ease; /* Transição suave e lenta */
-  margin-left: 8px; /* Espaço entre o texto e o ícone */
+  transition: transform 0.6s ease;
+  /* Transição suave e lenta */
+  margin-left: 8px;
+  /* Espaço entre o texto e o ícone */
 }
 
 .btn-collapse:not(.collapsed) .arrow {
-  transform: rotate(180deg); /* Rotaciona a seta para cima quando expandida */
+  transform: rotate(180deg);
+  /* Rotaciona a seta para cima quando expandida */
 }
 
 /* Animação de levitação */
@@ -515,34 +541,44 @@ p>span {
   0% {
     transform: translateY(0);
   }
+
   50% {
-    transform: translateY(-2px); /* Sobe um pouco */
+    transform: translateY(-2px);
+    /* Sobe um pouco */
   }
+
   100% {
-    transform: translateY(0); /* Volta para a posição original */
+    transform: translateY(0);
+    /* Volta para a posição original */
   }
 }
 
 .btn-collapse .arrow {
-  animation: levitate .3s ease-in-out infinite; /* Animação de levitação */
+  animation: levitate .3s ease-in-out infinite;
+  /* Animação de levitação */
 }
 
 .btn-collapse.collapsed .arrow {
-  animation: levitate .8s ease-in-out infinite; /* Mantém a animação de levitação quando colapsado */
+  animation: levitate .8s ease-in-out infinite;
+  /* Mantém a animação de levitação quando colapsado */
 }
 
 .btn-collapse:not(.collapsed) .arrow {
-  animation: none; /* Para a animação de levitação quando expandido */
+  animation: none;
+  /* Para a animação de levitação quando expandido */
 }
 
 .btn-collapse:active .arrow {
-  animation: none; /* Para a animação de levitação enquanto clicado */
+  animation: none;
+  /* Para a animação de levitação enquanto clicado */
 }
 
 hr {
   width: 200px;
-  border: 1px solid var(--corPrincipal); /* Cor da borda */
-  margin: 5px 0 10px 0px;  /* Margem acima e abaixo */
+  border: 1px solid var(--corPrincipal);
+  /* Cor da borda */
+  margin: 5px 0 10px 0px;
+  /* Margem acima e abaixo */
 }
 
 /* Input Busca */

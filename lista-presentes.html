@@ -134,9 +134,38 @@
     <div class="search-container">
       <input type="text" id="search-input" placeholder="Procurar um presente..." />
       <span class="search-icon">&#128269;</span> <!-- Ícone de busca -->
+      <button class="btn btn-primary ms-2 pulsar" id="filterButton" data-bs-toggle="modal"
+        data-bs-target="#filterModal">Filtrar</button>
     </div>
 
+    <!-- Modal para Filtros -->
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="filterModalLabel">Filtrar por Preço</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Selecione um filtro:</p>
+            <div class="btn-group-filter">
+              <button class="btn btn-outline-primary" onclick="inserirProdutosFiltrados('crescente')" data-filtro="Ordem Crescente">Crescente</button>
+              <button class="btn btn-outline-primary" onclick="inserirProdutosFiltrados('decrescente')" data-filtro="Ordem Decrescente">Decrescente</button>
+              <button class="btn btn-outline-primary" onclick="inserirProdutosFiltrados('não comprado')" data-filtro="Não Comprados">Não Comprado</button>
+              <button class="btn btn-outline-primary" onclick="inserirProdutosFiltrados('comprado')" data-filtro="Comprados">Comprado</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Presentes -->
+    
+    <!-- Presentes Filtrados -->
+    <section class="topico" id="produtosFiltrados" style="display: block; margin-top: 0;">
+      <h1 class="first" id="title-filter"></h1>
+      <div class="cards-presentes">
+    </section>
+
     <!-- Eletrodomésticos -->
     <section class="topico" id="eletrodomesticos">
       <h1 class="first">Eletrodomésticos</h1>
@@ -163,10 +192,6 @@
         </div>
     </section>
 
-
-    <!-- Os cards serão inseridos aqui pelo JavaScript -->
-    </div>
-
     <!-- Casa -->
     <section class="topico" id="casa">
       <h1>Casa</h1>
@@ -179,10 +204,6 @@
           </div>
         </div>
     </section>
-
-
-    <!-- Os cards serão inseridos aqui pelo JavaScript -->
-    </div>
 
     <!-- Festa -->
     <section class="topico" id="festa">
@@ -209,10 +230,6 @@
           </div>
         </div>
     </section>
-
-
-    <!-- Os cards serão inseridos aqui pelo JavaScript -->
-    </div>
 
     <!-- Modal Confirmar Compra -->
     <div class="modal fade" id="modalComprei" tabindex="-1" aria-labelledby="modalCompreiLabel" aria-hidden="true">
