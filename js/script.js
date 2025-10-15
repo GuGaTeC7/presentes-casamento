@@ -61,7 +61,10 @@ async function iniciarTutorial() {
           </div>
            <p style="text-align: center; font-size: 0.9rem;">Clique no botão <b>"MISSÃO LUA DE MEL"</b> para revelar nosso PIX!</p>
            <p style="text-align: center; font-size: 0.8rem; color: #666;">💖 Uma forma especial de contribuir para nossa viagem dos sonhos!</p>
-           <p style="text-align: center; font-size: 0.9rem; font-weight: bold; color: var(--corPrincipal);">📱 PIX: +55 11 96338-0372</p>
+           <p style="text-align: center; font-size: 0.9rem; font-weight: bold; padding-top: 10px; color: var(--corPrincipal);">
+             📱 PIX: +55 11 96338-0372 <br>
+             <button onclick="navigator.clipboard.writeText('+55 11 96338-0372').then(() => { this.innerHTML = '✓ Copiado!'; setTimeout(() => { this.innerHTML = 'Copiar'; }, 2000); })" style="margin-left: 10px; margin-top: 5px; padding: 4px 8px; background-color: #da008e; color: white; border: none; border-radius: 4px; font-size: 0.8rem; cursor: pointer;">Copiar</button>
+           </p>
         `,
         },
         {
