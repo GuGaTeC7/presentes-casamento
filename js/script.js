@@ -16,137 +16,574 @@ document.querySelectorAll(".dropdown-menu .dropdown-item").forEach((item) => {
   });
 });
 
+// Tutorial Nativo - Profissional e Responsivo
+class TutorialNativo {
+  constructor(steps) {
+    this.steps = steps;
+    this.currentStep = 0;
+    this.overlay = null;
+    this.tooltip = null;
+    this.skipButton = null;
+    this.resizeTimeout = null;
+    this.boundHandleResize = this.handleResize.bind(this);
+  }
+
+  start() {
+    this.injectStyles();
+    this.createOverlay();
+    this.createSkipButton();
+    this.showStep(0);
+    
+    // Event listener para responsividade
+    window.addEventListener('resize', this.boundHandleResize);
+  }
+
+  injectStyles() {
+    if (document.getElementById('tutorial-styles')) return;
+    
+    const style = document.createElement('style');
+    style.id = 'tutorial-styles';
+    style.textContent = `
+      @keyframes tutorialFadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes tutorialSlideUp {
+        from { 
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to { 
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      @keyframes tutorialPulse {
+        0%, 100% { 
+          box-shadow: 0 0 0 0 rgba(218, 0, 142, 0.7);
+        }
+        50% { 
+          box-shadow: 0 0 0 15px rgba(218, 0, 142, 0);
+        }
+      }
+      
+      .tutorial-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        z-index: 999998;
+        animation: tutorialFadeIn 0.3s ease-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      
+      .tutorial-tooltip {
+        position: relative;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        border-radius: 16px;
+        padding: 32px;
+        z-index: 1000000;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
+                    0 0 0 1px rgba(0, 0, 0, 0.05);
+        animation: tutorialSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        max-height: 85vh;
+        max-width: 600px;
+        width: 100%;
+        overflow-y: auto;
+      }
+      
+      .tutorial-tooltip::-webkit-scrollbar {
+        width: 8px;
+      }
+      
+      .tutorial-tooltip::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+      
+      .tutorial-tooltip::-webkit-scrollbar-thumb {
+        background: #da008e;
+        border-radius: 10px;
+      }
+      
+      .tutorial-skip-btn {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        padding: 12px 24px;
+        background-color: #da008e;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 1000001;
+        font-weight: 600;
+        font-size: 14px;
+        box-shadow: 0 4px 12px rgba(218, 0, 142, 0.4);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: tutorialFadeIn 0.5s ease-out;
+      }
+      
+      .tutorial-skip-btn:hover {
+        background-color: #b0006e;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(218, 0, 142, 0.5);
+      }
+      
+      .tutorial-skip-btn:active {
+        transform: translateY(0);
+      }
+      
+      .tutorial-progress-bar {
+        width: 100%;
+        height: 6px;
+        background-color: #e9ecef;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 16px;
+      }
+      
+      .tutorial-progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #da008e 0%, #ff1aa8 100%);
+        border-radius: 10px;
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 0 10px rgba(218, 0, 142, 0.3);
+      }
+      
+      .tutorial-step-counter {
+        text-align: center;
+        font-size: 13px;
+        color: #6c757d;
+        margin-bottom: 16px;
+        font-weight: 500;
+      }
+      
+      .tutorial-content {
+        margin-bottom: 20px;
+      }
+      
+      .tutorial-title {
+        margin: 0 0 12px 0;
+        color: #da008e;
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+      
+      .tutorial-body {
+        color: #333;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+      
+      .tutorial-buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-top: 24px;
+      }
+      
+      .tutorial-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        flex: 1;
+      }
+      
+      .tutorial-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      
+      .tutorial-btn-prev {
+        background-color: #6c757d;
+        color: white;
+      }
+      
+      .tutorial-btn-prev:not(:disabled):hover {
+        background-color: #5a6268;
+        transform: translateX(-2px);
+      }
+      
+      .tutorial-btn-next {
+        background-color: #da008e;
+        color: white;
+        box-shadow: 0 4px 12px rgba(218, 0, 142, 0.3);
+      }
+      
+      .tutorial-btn-next:hover {
+        background-color: #b0006e;
+        transform: translateX(2px);
+        box-shadow: 0 6px 16px rgba(218, 0, 142, 0.4);
+      }
+      
+      /* Responsividade Mobile */
+      @media (max-width: 768px) {
+        .tutorial-overlay {
+          padding: 16px;
+        }
+        
+        .tutorial-tooltip {
+          max-width: 100%;
+          padding: 24px;
+          max-height: 90vh;
+        }
+        
+        .tutorial-skip-btn {
+          top: 12px;
+          right: 12px;
+          padding: 10px 20px;
+          font-size: 13px;
+        }
+        
+        .tutorial-title {
+          font-size: 1.35rem;
+        }
+        
+        .tutorial-body {
+          font-size: 14px;
+        }
+        
+        .tutorial-buttons {
+          gap: 10px;
+        }
+        
+        .tutorial-btn {
+          padding: 12px 20px;
+          font-size: 14px;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .tutorial-overlay {
+          padding: 12px;
+        }
+        
+        .tutorial-tooltip {
+          padding: 20px;
+          border-radius: 12px;
+        }
+        
+        .tutorial-title {
+          font-size: 1.2rem;
+        }
+        
+        .tutorial-body {
+          font-size: 13px;
+        }
+        
+        .tutorial-buttons {
+          flex-direction: column;
+          gap: 8px;
+        }
+        
+        .tutorial-btn {
+          width: 100%;
+          padding: 14px;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  createOverlay() {
+    this.overlay = document.createElement('div');
+    this.overlay.className = 'tutorial-overlay';
+    document.body.appendChild(this.overlay);
+  }
+
+  createSkipButton() {
+    this.skipButton = document.createElement('button');
+    this.skipButton.className = 'tutorial-skip-btn';
+    this.skipButton.innerHTML = '<i class="fas fa-times"></i> Pular Tutorial';
+    this.skipButton.onclick = () => this.exit();
+    document.body.appendChild(this.skipButton);
+  }
+
+  createTooltip(step) {
+    // Remover tooltip anterior
+    if (this.tooltip) {
+      this.tooltip.remove();
+    }
+    
+    const isLastStep = this.currentStep === this.steps.length - 1;
+    const progress = ((this.currentStep + 1) / this.steps.length) * 100;
+    
+    this.tooltip = document.createElement('div');
+    this.tooltip.className = 'tutorial-tooltip';
+    
+    this.tooltip.innerHTML = `
+      <div class="tutorial-progress-bar">
+        <div class="tutorial-progress-fill" style="width: ${progress}%"></div>
+      </div>
+      <div class="tutorial-step-counter">
+        Passo ${this.currentStep + 1} de ${this.steps.length}
+      </div>
+      <div class="tutorial-content">
+        ${step.title ? `<h3 class="tutorial-title">${step.title}</h3>` : ''}
+        <div class="tutorial-body">${step.intro}</div>
+      </div>
+      <div class="tutorial-buttons">
+        <button class="tutorial-btn tutorial-btn-prev" id="tutorial-prev" ${this.currentStep === 0 ? 'disabled' : ''}>
+          <i class="fas fa-chevron-left"></i> Voltar
+        </button>
+        <button class="tutorial-btn tutorial-btn-next" id="tutorial-next">
+          ${isLastStep ? 'Finalizar <i class="fas fa-check"></i>' : 'Próximo <i class="fas fa-chevron-right"></i>'}
+        </button>
+      </div>
+    `;
+    
+    // Adicionar ao overlay (que já está centralizado)
+    this.overlay.appendChild(this.tooltip);
+    
+    // Event listeners
+    const prevBtn = this.tooltip.querySelector('#tutorial-prev');
+    const nextBtn = this.tooltip.querySelector('#tutorial-next');
+    
+    if (prevBtn) {
+      prevBtn.onclick = () => this.previousStep();
+    }
+    
+    if (nextBtn) {
+      nextBtn.onclick = () => {
+        if (isLastStep) {
+          this.exit();
+        } else {
+          this.nextStep();
+        }
+      };
+    }
+  }
+
+  showStep(stepIndex) {
+    if (stepIndex < 0 || stepIndex >= this.steps.length) return;
+    
+    this.currentStep = stepIndex;
+    const step = this.steps[stepIndex];
+    
+    // Criar tooltip centralizado
+    this.createTooltip(step);
+  }
+
+  nextStep() {
+    if (this.currentStep < this.steps.length - 1) {
+      this.showStep(this.currentStep + 1);
+    }
+  }
+
+  previousStep() {
+    if (this.currentStep > 0) {
+      this.showStep(this.currentStep - 1);
+    }
+  }
+
+  handleResize() {
+    // Não precisa fazer nada, o CSS flexbox já cuida do posicionamento
+    clearTimeout(this.resizeTimeout);
+  }
+
+  exit() {
+    // Remover event listener
+    window.removeEventListener('resize', this.boundHandleResize);
+    
+    // Remover elementos com animação de saída
+    [this.overlay, this.skipButton].forEach(el => {
+      if (el) {
+        el.style.opacity = '0';
+        el.style.transition = 'opacity 0.3s ease-out';
+        setTimeout(() => el.remove(), 300);
+      }
+    });
+    
+    // Remover estilos após um delay
+    setTimeout(() => {
+      const styles = document.getElementById('tutorial-styles');
+      if (styles) styles.remove();
+    }, 400);
+  }
+}
+
 // Função que inicia o tutorial
 async function iniciarTutorial() {
-  // Adicionando o botão de "Pular Tutorial"
-  const skipButton = document.createElement("button");
-  skipButton.innerText = "Pular Tutorial";
-  skipButton.style.position = "fixed";
-  skipButton.style.top = "10px";
-  skipButton.style.right = "10px";
-  skipButton.style.padding = "10px";
-  skipButton.style.backgroundColor = "#da008e";
-  skipButton.style.color = "white";
-  skipButton.style.border = "none";
-  skipButton.style.borderRadius = "5px";
-  skipButton.style.cursor = "pointer";
-
-  // Adicionando o botão à página
-  document.body.appendChild(skipButton);
-
-  // Função para pular o tutorial
-  skipButton.addEventListener("click", () => {
-    introJs().exit(); // Encerra o tutorial quando o botão é clicado
-  });
-
-  // Iniciando o tutorial
-  introJs()
-    .setOptions({
-      steps: [
-        {
-          element: document.querySelector(".title-lista"),
-          title: "Bem-vindo!",
-          intro:
-            "Este é um tutorial rápido para ajudá-lo a entender como navegar e utilizar o site.",
-        },
-        {
-          element: document.querySelector("#toggleButton"),
-          title: "PIX para Lua de Mel",
+  // Definir os passos do tutorial (centralizados)
+  const steps = [
+    {
+      title: "Bem-vindo! 👋",
+      intro: `
+        <p style="text-align: center; font-size: 1.1rem; line-height: 1.6;">
+          Este é um tutorial rápido para ajudá-lo a entender como navegar e utilizar nossa <strong>Lista de Presentes</strong>.
+        </p>
+        <p style="text-align: center; color: #666; margin-top: 10px;">
+          Vamos começar?
+        </p>
+      `
+    },
+    {
+      title: "💖 PIX para Lua de Mel",
           intro: `
-          <div class="card qr-pix" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; margin-bottom: 10px;">
-            <button class="btn btn-collapse collapsed" type="button" style="width: 100%; background-color: #da008e; color: white; border: none; padding: 10px; border-radius: 5px;">
+        <div class="card qr-pix" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 15px; margin-bottom: 15px;">
+          <button class="btn btn-collapse collapsed" type="button" style="width: 100%; background-color: #da008e; color: white; border: none; padding: 12px; border-radius: 5px; font-weight: 600;">
               MISSÃO LUA DE MEL
               <i class="fas fa-chevron-down arrow"></i>
             </button>
           </div>
-           <p style="text-align: center; font-size: 0.9rem;">Clique no botão <b>"MISSÃO LUA DE MEL"</b> para revelar nosso PIX!</p>
-           <p style="text-align: center; font-size: 0.8rem; color: #666;">💖 Uma forma especial de contribuir para nossa viagem dos sonhos!</p>
-           <p style="text-align: center; font-size: 0.9rem; font-weight: bold; padding-top: 10px; color: var(--corPrincipal);">
-             📱 PIX: +55 11 96338-0372 <br>
-             <button onclick="navigator.clipboard.writeText('+55 11 96338-0372').then(() => { this.innerHTML = '✓ Copiado!'; setTimeout(() => { this.innerHTML = 'Copiar'; }, 2000); })" style="margin-left: 10px; margin-top: 5px; padding: 4px 8px; background-color: #da008e; color: white; border: none; border-radius: 4px; font-size: 0.8rem; cursor: pointer;">Copiar</button>
-           </p>
-        `,
-        },
-        {
-          title: "Produto Exemplo",
+        <p style="text-align: center; font-size: 1rem; margin-bottom: 10px;">
+          Clique no botão <b>"MISSÃO LUA DE MEL"</b> para revelar nosso PIX!
+        </p>
+        <p style="text-align: center; font-size: 0.9rem; color: #666;">
+          💖 Uma forma especial de contribuir para nossa viagem dos sonhos!
+        </p>
+        <div style="background: #f8f9fa; border-radius: 8px; padding: 15px; margin-top: 15px;">
+          <p style="text-align: center; font-size: 1rem; font-weight: bold; color: #da008e; margin: 0;">
+            📱 PIX: +55 11 96338-0372
+          </p>
+          <p style="text-align: center; margin-top: 10px;">
+            <button onclick="navigator.clipboard.writeText('+55 11 96338-0372').then(() => { this.innerHTML = '✓ Copiado!'; setTimeout(() => { this.innerHTML = '📋 Copiar PIX'; }, 2000); })" style="padding: 8px 16px; background-color: #da008e; color: white; border: none; border-radius: 6px; font-size: 0.9rem; cursor: pointer; font-weight: 600;">
+              📋 Copiar PIX
+            </button>
+          </p>
+        </div>
+      `
+    },
+    {
+      title: "🎁 Como funcionam os produtos",
           intro: `
-          <div class="card" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; display: flex; align-items: center; margin-bottom: 0">
-            <img src="https://a-static.mlcdn.com.br/800x560/jogo-de-copos-de-vidro-transparente-simetria-370ml-6-pecas-casambiente/globaleletro/4483p/121eda1394fe9573f0969bc357548683.jpeg" class="card-img-top" alt="Produto" style="width: 90px; border-radius: 10px;">
-            <div class="card-body" style="padding: 0 0 5px 0px;">
-              <h5 class="card-title" style="font-size: 0.8rem; margin: 0;">Jogo de Copos de Vidro</h5>
-              <p class="card-text" style="font-size: 0.8rem;">R$ 52,71</p>
+        <div class="card" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 15px; margin-bottom: 15px;">
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <img src="https://a-static.mlcdn.com.br/800x560/jogo-de-copos-de-vidro-transparente-simetria-370ml-6-pecas-casambiente/globaleletro/4483p/121eda1394fe9573f0969bc357548683.jpeg" alt="Produto" style="width: 100px; border-radius: 8px;">
+            <div>
+              <h5 style="font-size: 1rem; margin: 0 0 5px 0;">Jogo de Copos de Vidro</h5>
+              <p style="font-size: 1.1rem; color: #da008e; font-weight: bold; margin: 0;">R$ 52,71</p>
             </div>
-            <p class="subtitle" style="font-size: 80%; margin:0;">Loja(s) recomendada(s):</p>
-            <div class="lojas">
-              <a href="#" target="_blank">
-                <img src="https://raw.githubusercontent.com/GuGaTeC7/API-viagens-aula/refs/heads/main/magalu_logo.png" class="lojas-icon" style="width: 35px;" alt="Magazine Luiza" title="Magazine Luiza" />
+            </div>
+          </div>
+        <p style="text-align: center; font-size: 1rem;">
+          Aqui você encontra diversos <b>cards</b> com sugestões de produtos como presentes para nós!
+        </p>
+        <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 10px;">
+          Escolha o que mais combina com você 💝
+        </p>
+      `
+    },
+    {
+      title: "🏪 Lojas Recomendadas",
+          intro: `
+        <div class="card" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 15px; margin-bottom: 15px; text-align: center;">
+          <p style="font-size: 0.95rem; margin: 0 0 10px 0; font-weight: 600;">Loja recomendada:</p>
+          <div style="display: flex; justify-content: center; gap: 10px;">
+            <img src="https://raw.githubusercontent.com/GuGaTeC7/API-viagens-aula/refs/heads/main/magalu_logo.png" style="width: 50px; border-radius: 5px;" alt="Magazine Luiza" />
+            </div>
+          </div>
+        <p style="text-align: center; font-size: 1rem; margin-bottom: 10px;">
+          Clique nos ícones das lojas para acessar diretamente o site onde o produto está disponível.
+        </p>
+        <div style="border: 3px dotted #df219d; padding: 12px; border-radius: 8px; margin-top: 15px;">
+          <p style="text-align: center; font-size: 0.9rem; margin: 0;">
+            <i><b>Se o produto não estiver disponível na loja, fique à vontade para escolhê-lo em outra!</b></i>
+          </p>
+        </div>
+      `
+    },
+    {
+      title: "📦 Endereço de Entrega",
+          intro: `
+        <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 12px; padding: 20px; margin-bottom: 15px;">
+          <p style="font-size: 1rem; text-align: center; margin-bottom: 15px;">
+            Para facilitar, envie seu presente para:
+          </p>
+          <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <p style="font-size: 1.1rem; text-align: center; color: #333; margin: 0; line-height: 1.6;">
+              📍 <a href="https://maps.app.goo.gl/mMNLeBB664CeN13d9" target="_blank" style="color: #da008e; text-decoration: none; font-weight: 600;">
+                R. Cel. Amaro Sobrinho, 553<br>
+                Vila Carrão, São Paulo - SP<br>
+                CEP: 03448-120
               </a>
+            </p>
+          </div>
+        </div>
+        <p style="text-align: center; font-size: 0.9rem; color: #666;">
+          Clique no endereço para abrir no Google Maps
+        </p>
+      `
+    },
+    {
+      title: "✅ Confirmando a Compra",
+          intro: `
+        <p style="text-align: center; font-size: 1rem; margin-bottom: 15px;">
+          Depois de comprar, clique no botão <strong>"Comprei"</strong> no card do produto.
+        </p>
+        <div class="card" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 20px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+          <button class="btn" style="border: none; background-color: #da008e; color: #ffffff; padding: 12px 24px; font-weight: 600; border-radius: 8px;">
+            Comprei
+          </button>
+          </div>
+        <p style="text-align: center; font-size: 0.95rem; color: #666;">
+          Um modal aparecerá para você comunicar a compra diretamente ao noivo ou à noiva pelo WhatsApp! 💬
+        </p>
+      `
+    },
+    {
+      title: "🔖 Itens já Comprados",
+      intro: `
+        <div style="position: relative; width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 15px; margin-bottom: 15px;">
+          <div style="position: absolute; top: 10px; right: 10px; background-color: red; color: white; padding: 5px 10px; font-size: 14px; font-weight: bold; border-radius: 50%; z-index: 10;">
+            Comprado
+          </div>
+          <div style="display: flex; align-items: center; gap: 15px; opacity: 0.7; filter: grayscale(100%);">
+            <img src="https://a-static.mlcdn.com.br/800x560/jogo-de-copos-de-vidro-transparente-simetria-370ml-6-pecas-casambiente/globaleletro/4483p/121eda1394fe9573f0969bc357548683.jpeg" alt="Produto Comprado" style="width: 100px; border-radius: 8px;">
+            <div>
+              <h5 style="font-size: 1rem; margin: 0 0 5px 0; color: #666;">Jogo de Copos de Vidro</h5>
+              <p style="font-size: 1.1rem; color: #999; font-weight: bold; margin: 0;">R$ 52,71</p>
             </div>
-            <a href="#" class="btn" style="font-size: 9px; margin-top: 10px; border: none; background-color: #da008e !important; color: #ffffff;">Comprei</a>
           </div>
-          <p style="text-align: center;">Aqui você verá diversos <b>cards</b> com sugestões de produtos como presentes.</p>
-        `,
-        },
-        {
-          title: "Loja recomendada",
+        </div>
+        <p style="text-align: center; font-size: 1rem; margin-bottom: 10px;">
+          Os cards com a tag vermelha <strong>"Comprado"</strong> no canto superior direito indicam que o produto já foi adquirido.
+        </p>
+        <p style="text-align: center; font-size: 0.95rem; color: #666;">
+          Eles ficam em tons de cinza. Escolha outros itens disponíveis! 😊
+        </p>
+      `
+    },
+    {
+      title: "🎉 Tudo Pronto!",
           intro: `
-          <div class="card" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; display: flex; align-items: center; margin-bottom: 5px">
-            <p class="subtitle" style="font-size: 95%; margin:0;">Loja(s) recomendada(s):</p>
-            <div class="lojas">
-              <a href="#" target="_blank">
-                <img src="https://raw.githubusercontent.com/GuGaTeC7/API-viagens-aula/refs/heads/main/magalu_logo.png" class="lojas-icon" alt="Magazine Luiza" title="Magazine Luiza" />
-              </a>
-            </div>
+        <div style="text-align: center; padding: 20px;">
+          <div style="font-size: 4rem; margin-bottom: 20px;">
+            🎊
           </div>
-          <p style="text-align: center; font-size: 1rem; margin: 0 0 10px 0;">Clique nas lojas recomendadas para acessar diretamente o site da loja onde o produto está disponível.</p>
-          <p style="text-align: center; font-size: 0.8rem; border: 3px dotted #df219d; padding: 4px; margin: 0;"><i><b>se o produto não estiver mais disponível na loja, sinta-se à vontade para escolhê-lo em outra.<b></i></p>
-        `,
-        },
-        {
-          title: "Realizando a compra",
-          intro: `
-          <p style="font-size: 0.9rem;">Para facilitar sua compra, envie para o seguinte endereço:</p>
-          <p style="font-size: 0.9rem; margin-top: 20px; color: black; text-align: center;">📍 <a href="https://maps.app.goo.gl/mMNLeBB664CeN13d9" target="__blank" style="text-decoration: none;">R. Cel. Amaro Sobrinho, 553 - Vila Carrão, São Paulo - SP, 03448-120</a></p>
-          <p style="text-align: center; font-size: 0.9rem; ">Use esse endereço para o envio do presente.</p>
-        `,
-        },
-        {
-          title: "Confirmando a Compra",
-          intro: `
-          <p style="text-align: center;">Depois de comprar, clique no botão "Comprei" para confirmar.</p>
-          <div class="card" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; display: flex; align-items: center;">
-            <a href="#" class="btn btn-primary" style="border: none; background-color: #da008e; color: #ffffff;">Comprei</a>
-          </div>
-          <p style="text-align: center;">Depois disso, você pode comunicar a compra ao noivo/noiva através do modal que aparecerá.</p>
-        `,
-        },
-        {
-          title: "Itens Comprados",
-          intro: `
-          <div class="card comprado" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; display: flex; align-items: center; margin-bottom: 15px;">
-          </div>
-          <p style="text-align: center;">Os cards que possuem a tag <b>comprado</b> indicam que o produto já foi adquirido. Eles não devem ser comprados novamente.</p>
-        `,
-        },
-        {
-          title: "Finalizando",
-          intro: `
-        <p style="text-align: center;">Parabéns!</p>
-        <p style="text-align: center;">Agora você sabe como usar o site. Aproveite e faça boas compras!</p>
-        `,
-        },
-      ],
-      showProgress: true,
-      unsafeHtml: true, // Permite exibir HTML nos tooltips
-      nextLabel: "Próximo",
-      prevLabel: "Voltar",
-      exitAnimation: "fade", // Animação de saída
-      enterAnimation: "bounceIn", // Animação de entrada
-      tooltipPosition: "auto", // Posicionamento automático
-      tooltipClass: "large-tooltip", // Classe para o tooltip maior
-      doneLabel: "Finalizar",
-    })
-    .start();
+          <p style="font-size: 1.3rem; font-weight: bold; color: #da008e; margin-bottom: 15px;">
+            Parabéns!
+          </p>
+          <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 15px;">
+            Agora você sabe como usar nossa lista de presentes!
+          </p>
+          <p style="font-size: 1rem; color: #666;">
+            Obrigado por fazer parte desse momento especial! 💖
+          </p>
+          <p style="font-size: 1rem; margin-top: 20px; font-weight: 600;">
+            Aproveite e escolha seu presente!
+          </p>
+        </div>
+      `
+    }
+  ];
+  
+  // Iniciar o tutorial
+  const tutorial = new TutorialNativo(steps);
+  tutorial.start();
 }
 
 document.addEventListener("DOMContentLoaded", iniciarTutorial);
