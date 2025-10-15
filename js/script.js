@@ -50,6 +50,20 @@ async function iniciarTutorial() {
             "Este é um tutorial rápido para ajudá-lo a entender como navegar e utilizar o site.",
         },
         {
+          element: document.querySelector("#toggleButton"),
+          title: "PIX para Lua de Mel",
+          intro: `
+          <div class="card qr-pix" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; margin-bottom: 10px;">
+            <button class="btn btn-collapse collapsed" type="button" style="width: 100%; background-color: #da008e; color: white; border: none; padding: 10px; border-radius: 5px;">
+              MISSÃO LUA DE MEL
+              <i class="fas fa-chevron-down arrow"></i>
+            </button>
+          </div>
+          <p style="text-align: center; font-size: 0.9rem;">Clique no botão <b>"MISSÃO LUA DE MEL"</b> para revelar nosso PIX!</p>
+          <p style="text-align: center; font-size: 0.8rem; color: #666;">💖 Uma forma especial de contribuir para nossa viagem dos sonhos!</p>
+        `,
+        },
+        {
           title: "Produto Exemplo",
           intro: `
           <div class="card" style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; display: flex; align-items: center; margin-bottom: 0">
