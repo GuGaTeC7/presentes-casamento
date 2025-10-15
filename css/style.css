@@ -225,19 +225,52 @@ hr {
 
 /* Card */
 .cards-presentes {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+  width: 100%;
+  padding: 0 5%;
+  justify-items: center;
 }
 
 .card {
-  width: 90%;
+  width: 100%;
+  max-width: 400px;
   height: 100%;
-  margin-top: 25px;
+  margin-top: 0;
+}
+
+/* Responsividade do Grid */
+@media (min-width: 768px) {
+  .cards-presentes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .cards-presentes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .cards-presentes {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1400px) {
+  .cards-presentes {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  .card {
+    max-width: 280px;
+  }
 }
 
 .carregando {
+  grid-column: 1 / -1;
   width: 100%;
   padding: 20px;
 }
@@ -298,9 +331,6 @@ hr {
   padding: 15px;
 }
 
-.card:nth-child(1) {
-  margin-top: 0;
-}
 
 .card-body {
   display: flex;
