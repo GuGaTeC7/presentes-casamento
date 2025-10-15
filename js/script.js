@@ -586,7 +586,16 @@ async function iniciarTutorial() {
   tutorial.start();
 }
 
-document.addEventListener("DOMContentLoaded", iniciarTutorial);
+// Iniciar tutorial apenas na página de lista de presentes
+document.addEventListener("DOMContentLoaded", () => {
+  // Verificar se estamos na página lista-presentes.html
+  const isListaPresentes = window.location.pathname.includes('lista-presentes.html') || 
+                           document.querySelector('.title-lista');
+  
+  if (isListaPresentes) {
+    iniciarTutorial();
+  }
+});
 
 function modalNomeProduto() {
   // Evento para abrir o modal com o nome do produto
