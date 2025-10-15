@@ -59,8 +59,9 @@ async function iniciarTutorial() {
               <i class="fas fa-chevron-down arrow"></i>
             </button>
           </div>
-          <p style="text-align: center; font-size: 0.9rem;">Clique no botão <b>"MISSÃO LUA DE MEL"</b> para revelar nosso PIX!</p>
-          <p style="text-align: center; font-size: 0.8rem; color: #666;">💖 Uma forma especial de contribuir para nossa viagem dos sonhos!</p>
+           <p style="text-align: center; font-size: 0.9rem;">Clique no botão <b>"MISSÃO LUA DE MEL"</b> para revelar nosso PIX!</p>
+           <p style="text-align: center; font-size: 0.8rem; color: #666;">💖 Uma forma especial de contribuir para nossa viagem dos sonhos!</p>
+           <p style="text-align: center; font-size: 0.9rem; font-weight: bold; color: var(--corPrincipal);">📱 PIX: +55 11 96338-0372</p>
         `,
         },
         {

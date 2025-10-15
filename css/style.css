@@ -472,6 +472,7 @@ small {
   border: none;
   border-radius: 10px;
   transition: border-radius 0.1s ease-in-out;
+  animation: shake 2s ease-in-out infinite;
 }
 
 .btn-collapse:focus,
@@ -483,6 +484,7 @@ small {
 
 .btn-collapse:not(.collapsed) {
   border-radius: 10px 10px 0 0;
+  animation: none; /* Para a animação quando expandido */
 }
 
 
@@ -710,5 +712,39 @@ hr {
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+/* Animação de balanço divertida para o botão PIX */
+@keyframes shake {
+  0%, 100% { 
+    transform: translateX(0) rotate(0deg); 
+  }
+  10% { 
+    transform: translateX(-3px) rotate(-1deg); 
+  }
+  20% { 
+    transform: translateX(3px) rotate(1deg); 
+  }
+  30% { 
+    transform: translateX(-2px) rotate(-0.5deg); 
+  }
+  40% { 
+    transform: translateX(2px) rotate(0.5deg); 
+  }
+  50% { 
+    transform: translateX(-1px) rotate(-0.25deg); 
+  }
+  60% { 
+    transform: translateX(1px) rotate(0.25deg); 
+  }
+  70% { 
+    transform: translateX(-0.5px) rotate(-0.1deg); 
+  }
+  80% { 
+    transform: translateX(0.5px) rotate(0.1deg); 
+  }
+  90% { 
+    transform: translateX(-0.25px) rotate(-0.05deg); 
   }
 }
