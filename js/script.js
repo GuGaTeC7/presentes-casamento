@@ -964,7 +964,9 @@ function montaGridPresentes(presentes, idSection) {
             <div class="lojas" style="${
               status == false ? "" : "display: none;"
             }">
-              <a href="${linkLoja}" target="_blank" data-bs-toggle="modal" data-bs-target="#modalComunicarNoivos">
+              <a href="${linkLoja}" target="_blank" ${
+        imgLoja === "whatsapp" ? 'data-bs-toggle="modal" data-bs-target="#modalComunicarNoivos"' : ""
+      }>
                 <img src="${
                   imgLoja === "whatsapp" ? logoZap : imgLoja
                 }" class="lojas-icon" alt="Loja" title="Loja" />
@@ -1022,7 +1024,9 @@ function montaGridPresentes(presentes, idSection) {
             <div class="lojas" style="${
               status == false ? "" : "display: none;"
             }">
-              <a href="${linkLoja}" target="_blank" data-bs-toggle="modal" data-bs-target="#modalComunicarNoivos">
+              <a href="${linkLoja}" target="_blank" ${
+        imgLoja === "whatsapp" ? 'data-bs-toggle="modal" data-bs-target="#modalComunicarNoivos"' : ""
+      }>
                 <img src="${
                   imgLoja === "whatsapp" ? logoZap : imgLoja
                 }" class="lojas-icon" alt="Loja" title="Loja" />
@@ -1080,7 +1084,9 @@ function montaGridPresentes(presentes, idSection) {
             <div class="lojas" style="${
               status == false ? "" : "display: none;"
             }">
-              <a href="${linkLoja}" target="_blank" data-bs-toggle="modal" data-bs-target="#modalComunicarNoivos">
+              <a href="${linkLoja}" target="_blank" ${
+        imgLoja === "whatsapp" ? 'data-bs-toggle="modal" data-bs-target="#modalComunicarNoivos"' : ""
+      }>
                 <img src="${
                   imgLoja === "whatsapp" ? logoZap : imgLoja
                 }" class="lojas-icon" alt="Loja" title="Loja" />
