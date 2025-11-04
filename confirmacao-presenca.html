@@ -84,14 +84,15 @@
                     >Festa</a
                   >
                 </li>
-                <li class="nav-item">
+                <!-- Confirmação de presença encerrada -->
+                <!-- <li class="nav-item">
                   <a
                     class="nav-link"
                     aria-current="page"
                     href="/confirmacao-presenca.html"
                     >Confirmação de presença</a
                   >
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
@@ -101,32 +102,173 @@
 
     <!-- Main -->
     <main>
-      <!-- Título -->
-      <div class="container mt-4 pt-5" id="tituloMain">
-        <div class="text-center p-4">
-          <h1>Confirmação de presença</h1>
-          <p class="lead">
-            Sua presença tornará nosso dia ainda mais especial. Por favor,
-            confirme sua participação para nos ajudar na organização. <br />
-            Agradecemos muito!
-          </p>
+      <style>
+        .aviso-encerrado {
+          min-height: 70vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 40px 20px;
+        }
+        .card-aviso {
+          background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+          border-radius: 20px;
+          padding: 60px 40px;
+          box-shadow: 0 20px 60px rgba(255, 107, 107, 0.4);
+          text-align: center;
+          max-width: 800px;
+          width: 100%;
+          border: 4px solid #fff;
+          box-sizing: border-box;
+        }
+        .icone-aviso {
+          font-size: 120px;
+          margin-bottom: 30px;
+          animation: pulse 2s infinite;
+          display: block;
+        }
+        @keyframes pulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.1); }
+        }
+        .titulo-aviso {
+          font-size: 3.5rem;
+          font-weight: 900;
+          color: #fff;
+          margin-bottom: 30px;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+          line-height: 1.2;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+        }
+        .texto-aviso {
+          font-size: 1.8rem;
+          color: #fff;
+          font-weight: 600;
+          margin-bottom: 20px;
+          line-height: 1.5;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+        }
+        .subtexto-aviso {
+          font-size: 1.3rem;
+          color: #fff;
+          opacity: 0.95;
+          margin-top: 30px;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+        }
+        @media (max-width: 768px) {
+          .container-fluid {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+          }
+          .aviso-encerrado {
+            padding: 20px 15px;
+            min-height: 60vh;
+          }
+          .card-aviso {
+            padding: 40px 25px;
+            border-radius: 15px;
+            border-width: 3px;
+          }
+          .titulo-aviso {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+          }
+          .texto-aviso {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+          }
+          .subtexto-aviso {
+            font-size: 1rem;
+            margin-top: 20px;
+          }
+          .icone-aviso {
+            font-size: 70px;
+            margin-bottom: 20px;
+          }
+        }
+        @media (max-width: 480px) {
+          .container-fluid {
+            padding-left: 8px !important;
+            padding-right: 8px !important;
+          }
+          .aviso-encerrado {
+            padding: 15px 10px;
+            min-height: 50vh;
+          }
+          .card-aviso {
+            padding: 30px 20px;
+            border-radius: 12px;
+            border-width: 2px;
+          }
+          .titulo-aviso {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            line-height: 1.1;
+          }
+          .texto-aviso {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+          }
+          .subtexto-aviso {
+            font-size: 0.95rem;
+            margin-top: 15px;
+          }
+          .icone-aviso {
+            font-size: 60px;
+            margin-bottom: 15px;
+          }
+        }
+        @media (max-width: 360px) {
+          .container-fluid {
+            padding-left: 5px !important;
+            padding-right: 5px !important;
+          }
+          .aviso-encerrado {
+            padding: 10px 8px;
+          }
+          .card-aviso {
+            padding: 25px 15px;
+            border-radius: 10px;
+          }
+          .titulo-aviso {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+          }
+          .texto-aviso {
+            font-size: 1rem;
+            margin-bottom: 10px;
+          }
+          .subtexto-aviso {
+            font-size: 0.85rem;
+            margin-top: 12px;
+          }
+          .icone-aviso {
+            font-size: 50px;
+            margin-bottom: 12px;
+          }
+        }
+      </style>
+      
+      <div class="container-fluid mt-4 pt-5 px-3">
+        <div class="aviso-encerrado">
+          <div class="card-aviso">
+            <div class="icone-aviso">⚠️</div>
+            <h1 class="titulo-aviso">CONFIRMAÇÕES ENCERRADAS</h1>
+            <p class="texto-aviso">
+              Não é mais possível fazer confirmações de presença.
+            </p>
+            <p class="texto-aviso">
+              O prazo para confirmação já foi encerrado.
+            </p>
+            <p class="subtexto-aviso">
+              Agradecemos a todos que confirmaram sua presença! 💖
+            </p>
+          </div>
         </div>
-      </div>
-
-      <div style="width: 90%; margin-bottom: 20px; border: 2px solid #df219d">
-        <div id="loading" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-          <h5 class="card-title">CARREGANDO FORMULÁRIO, AGUARDE...</h5>
-          <div class="spinner"></div>
-        </div>
-        <iframe
-          src="https://forms.gle/9Yfe7zZyrJtoN1cMA"
-          style="width: 100%; height: 800px"
-          frameborder="0"
-          marginheight="0"
-          marginwidth="0"
-          onload="hideLoader()"
-        >
-      </iframe>
       </div>
     </main>
 
@@ -146,10 +288,11 @@
           <a href="/festa.html" class="footer-link">Festa</a>
           <span class="footer-separator mx-2">|</span>
           <a href="/nossa-historia.html" class="footer-link">Nossa História</a>
-          <span class="footer-separator mx-2">|</span>
+          <!-- Confirmação de presença encerrada -->
+          <!-- <span class="footer-separator mx-2">|</span>
           <a href="/confirmacao-presenca.html" class="footer-link"
             >Confirmação</a
-          >
+          > -->
         </div>
 
         <hr />
